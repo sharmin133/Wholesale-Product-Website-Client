@@ -15,6 +15,7 @@ import NotFound from './NotFound/NotFound';
 import AddProduct from './Pages/AddProduct';
 import MyProduct from './Pages/MyProduct';
 import AllProduct from './Pages/AllProduct';
+import UpdateProduct from './Pages/UpdateProduct';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
     
     loader:()=>fetch('http://localhost:3000/products'),
     element:<AllProduct></AllProduct>
+  },
+  {
+    path:'updatedProduct/:id',
+  loader:({params})=>fetch(`http://localhost:3000/products/${params.id}`),
+    element:<UpdateProduct></UpdateProduct>
   }
 
     ]
