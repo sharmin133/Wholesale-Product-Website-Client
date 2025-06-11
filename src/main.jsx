@@ -12,6 +12,8 @@ import Register from './Pages/Register';
 import LogIn from './Pages/LogIn';
 import AuthProvider from './Context/AuthProvider';
 import NotFound from './NotFound/NotFound';
+import AddProduct from './Pages/AddProduct';
+import MyProduct from './Pages/MyProduct';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,13 @@ const router = createBrowserRouter([
   {
     path:'login', element:<LogIn></LogIn>
   },
+
+  {
+    path:'addProduct', element:<AddProduct></AddProduct>
+  },
+  {
+    path:'myProduct', element:<MyProduct></MyProduct>
+  }
 
     ]
   },
