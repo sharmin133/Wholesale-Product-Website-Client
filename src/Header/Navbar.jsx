@@ -15,6 +15,7 @@ const Navbar = () => {
      <li><NavLink  to='/register' >Register</NavLink></li>
      <li> <NavLink  to='/addProduct' >Add Product</NavLink></li>
      <li> <NavLink  to='/myProduct' >My Product</NavLink></li>
+     <li><NavLink to='/allProduct'> All Product</NavLink></li>
     
     </>
   )

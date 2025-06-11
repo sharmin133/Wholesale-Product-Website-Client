@@ -14,6 +14,7 @@ import AuthProvider from './Context/AuthProvider';
 import NotFound from './NotFound/NotFound';
 import AddProduct from './Pages/AddProduct';
 import MyProduct from './Pages/MyProduct';
+import AllProduct from './Pages/AllProduct';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,12 @@ const router = createBrowserRouter([
   },
   {
     path:'myProduct', element:<MyProduct></MyProduct>
+  },
+  {
+    path:'allProduct',
+    
+    loader:()=>fetch('http://localhost:3000/products'),
+    element:<AllProduct></AllProduct>
   }
 
     ]
