@@ -3,6 +3,7 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const AllProduct = () => {
     const products=useLoaderData();
@@ -16,6 +17,9 @@ const AllProduct = () => {
     // const {user}=use(AuthContext)
     return (
         <div>
+          <Helmet>
+            <title>All Products | PrimeGo</title>
+          </Helmet>
 
              <label className="flex items-center gap-2 cursor-pointer">
         <span>Card View</span>

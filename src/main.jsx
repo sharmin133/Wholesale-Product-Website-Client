@@ -16,6 +16,10 @@ import AddProduct from './Pages/AddProduct';
 import MyProduct from './Pages/MyProduct';
 import AllProduct from './Pages/AllProduct';
 import UpdateProduct from './Pages/UpdateProduct';
+import { HelmetProvider } from 'react-helmet-async';
+
+import CategoryPage from './Pages/Category/CategoryPage';
+import CategoryProductDetails from './Pages/Category/CategoryProductDetails';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +54,15 @@ const router = createBrowserRouter([
     path:'updatedProduct/:id',
   loader:({params})=>fetch(`http://localhost:3000/products/${params.id}`),
     element:<UpdateProduct></UpdateProduct>
+  },
+
+  {
+    path:'products/category/:categoryName', element:<CategoryPage></CategoryPage>
+  },
+  {
+    path:'products/:id',
+    loader:({params})=>fetch(`http://localhost:3000/products/${params.id}`),
+    element:<CategoryProductDetails> </CategoryProductDetails>
   }
 
     ]
@@ -75,8 +88,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider>
+   <HelmetProvider>
+     <AuthProvider>
       <RouterProvider router={router} />
     </AuthProvider>
+   </HelmetProvider>
   </StrictMode>,
 )

@@ -10,6 +10,7 @@ const AddProduct = () => {
         const form=e.target;
         const formData= new FormData(form);
         const newProduct=Object.fromEntries(formData.entries());
+        console.log(newProduct)
        
 
        axios.post('http://localhost:3000/products',newProduct)
