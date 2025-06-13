@@ -21,6 +21,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import CategoryPage from './Pages/Category/CategoryPage';
 import CategoryProductDetails from './Pages/Category/CategoryProductDetails';
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -63,7 +64,8 @@ const router = createBrowserRouter([
     path:'products/:id',
     loader:({params})=>fetch(`http://localhost:3000/products/${params.id}`),
     element:<CategoryProductDetails> </CategoryProductDetails>
-  }
+  },
+
 
     ]
   },
