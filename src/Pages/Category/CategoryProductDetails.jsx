@@ -3,7 +3,8 @@ import { Link } from 'react-router';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { useState } from 'react';
-import {  ToastContainer } from 'react-toastify';
+import {  toast, ToastContainer } from 'react-toastify';
+import axios from 'axios';
 
 
 const CategoryProductDetails = () => {
@@ -25,23 +26,35 @@ const CategoryProductDetails = () => {
        SetIsQuantity(prev=>prev-1);
       }
 
+      
+
     }
 
-  const handleBuy=()=>{
-  
-  
+
+const handleBuy = (e) => {
+  e.preventDefault();
+
+  const minSellingQty = parseInt(product.min_selling_quantity);
+
+  if (quantity < minSellingQty) {
+    toast.error(`Minimum order is ${minSellingQty} items.`);
+    return;
+  }
+
+  axios.patch(`http://localhost:3000/products/buy/${product._id}`, { quantityToBuy: quantity })
+    .then(result => {
+      console.log(result)
+      toast.success('Purchase successful!');
+      
+    })
+    .catch(error => {
+      toast.error(error);
+    });
+};
+
+const handleForm=e=>{
+  e.preventDefault();
 }
-
- const handleAddCheckOutForm=e=>{
-           e.preventDefault();
-        const form=e.target;
-        const formData= new FormData(form);
-        const newProduct=Object.fromEntries(formData.entries());
-        console.log(newProduct)
-       
-
-
-    }
 
 
     return (
@@ -53,9 +66,10 @@ const CategoryProductDetails = () => {
           <p><span className="font-semibold">Brand:</span> {product.brand}</p>
           <p><span className="font-semibold">Category:</span> {product.category}</p>
           <p><span className="font-semibold">Min Order:</span> {product.min_selling_quantity} pcs</p>
+          <p><span className="font-semibold">Main quantity:</span> {product.main_quantity} pcs</p>
           <p className="text-gray-700">{product.description}</p>
           <p className="text-2xl font-semibold text-green-600">৳ {product.price}</p>
- <button className="btn btn-primary mt-4" onClick={() => document.getElementById('buy_modal').showModal()}>
+      <button className="btn btn-primary mt-4" onClick={() => document.getElementById('buy_modal').showModal()}>
             Buy
           </button>
 
@@ -64,7 +78,7 @@ const CategoryProductDetails = () => {
                <ToastContainer position="top-center" autoClose={3000} />
             <div className="modal-box">
               <h3 className="text-lg font-bold mb-2">Purchase Product</h3>
-             <form onSubmit={handleAddCheckOutForm}>
+             <form onSubmit={handleForm}>
               <div className="space-y-2">
                 <input className="input input-bordered w-full" value={user?.displayName} readOnly />
                 <input className="input input-bordered w-full" value={user?.email} readOnly />
@@ -78,10 +92,10 @@ const CategoryProductDetails = () => {
               </div>
 
               <div className="modal-action">
-                <button className="btn btn-success" onClick={handleBuy} >Buy</button>
-                <form method="dialog">
-                  <button type="submit"  className="btn">Close</button>
-                </form>
+                <button className="btn btn-success"onClick={handleBuy} >Buy</button>
+                <button type="button" className="btn" onClick={() => document.getElementById('buy_modal').close()}>
+      Cancel
+    </button>
               </div>
               </form>
             </div>
