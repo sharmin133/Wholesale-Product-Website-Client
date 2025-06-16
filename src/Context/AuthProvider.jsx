@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { auth } from '../Firebase/firebase.init';
+import axios from 'axios';
 
 const AuthProvider = ({children}) => {
 
@@ -32,16 +33,51 @@ const googleSignIn=()=>{
     setLoading(true)
     return signInWithPopup(auth,googleAuthProvider)
 }
-    useEffect(()=>{
-        const unSubscribe=onAuthStateChanged(auth,currentUser=>{
-            setUser(currentUser)
-            setLoading(false)
+    // useEffect(()=>{
+    //     const unSubscribe=onAuthStateChanged(auth,currentUser=>{
+    //         setUser(currentUser)
+    //         setLoading(false)
 
+    //     })
+    //     return ()=>{
+    //         unSubscribe();
+    //     }
+    // },[])
+
+    useEffect(() => {
+  const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
+    setUser(null); 
+    if (currentUser?.email) {
+      try {
+        const res = await axios.get(`http://localhost:3000/users/${currentUser.email}`);
+        const dbUser = res.data;
+        setUser({
+          ...currentUser,
+          role: dbUser?.role || 'normal', 
+        });
+      } catch (err) {
+        console.error('Failed to fetch user role:', err);
+      }
+    } else {
+      setUser(null);
+    }
+    setLoading(false);
+
+    if(currentUser?.email){
+        const userData={email:currentUser.email};
+        axios.post('http://localhost:3000/jwt',userData,{
+            withCredentials:true
         })
-        return ()=>{
-            unSubscribe();
-        }
-    },[])
+        
+        .then(res=>{
+            console.log(res.data)
+        })
+        .catch(error=>console.log(error))
+    }
+  });
+
+  return () => unSubscribe();
+}, []);
 
 
 

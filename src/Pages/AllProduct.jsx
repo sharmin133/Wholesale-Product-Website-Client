@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 import { Link, useLoaderData } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
@@ -6,15 +6,16 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const AllProduct = () => {
+  
     const products=useLoaderData();
     const[tableView,setTableView]=useState(false);
 
 
-
+ 
     const handletoggle=()=>{
         setTableView(!tableView);
     }
-    // const {user}=use(AuthContext)
+   
     return (
         <div>
           <Helmet>
@@ -63,7 +64,7 @@ const AllProduct = () => {
 
 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
   {products.map((product) => (
-    <div className='rounded-lg shadow-lg'>
+    <div  key={product._id} className='rounded-lg shadow-lg'>
     <div key={product._id}className=" p-4 flex items-center gap-3">
       <img src={product.photo} alt="" className="w-40 h-40 object-cover rounded-md mb-4 "/>
       <div>

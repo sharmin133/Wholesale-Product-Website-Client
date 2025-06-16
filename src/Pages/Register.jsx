@@ -1,28 +1,25 @@
-import React, { use } from 'react';
+import React, {  useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import { Link } from 'react-router';
 import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
+import axios from 'axios';
 
 const Register = () => {
 
- const{createUser}=use(AuthContext)
+ const{createUser}=useContext(AuthContext)
  const[errorMessage,setErrorMessage]=useState(false)
  const [successMessage, setSuccessMessage]=useState('')
 
     
-
-
-
-
-
       const handleRegister=e=>{
         e.preventDefault();
         const form=e.target;
         const name=form.name.value;
         const email=form.email.value;
         const password=form.password.value;
-        console.log(name,email,password )
+          const role = form.role.value;
+        console.log(name,email,password,role )
         setSuccessMessage(false);
         setErrorMessage('')
 
@@ -36,6 +33,12 @@ const Register = () => {
      .then(result=>{
         console.log(result.user)
         toast.success('User has been created successfully.')
+         axios.post('http://localhost:3000/users', {
+        uid: result.user.uid,
+        name,
+        email,
+        role,
+      })
      })
      .catch(error=>{
         console.log(error)
@@ -58,6 +61,13 @@ const Register = () => {
       <div className="card-body">
            <h1 className="text-5xl font-bold">Register Now </h1>
         <form onSubmit={handleRegister} className="fieldset">
+
+          <label className="label">Select Role</label>
+  <select name="role" className="input" required>
+    <option value="">-- Choose a role --</option>
+    <option value="normal">Regular User</option>
+    <option value="brand">Brandized User</option>
+  </select>
             <label className="label">Name</label>
           <input type="text" name='name' className="input" placeholder="Your Name" />
           <label className="label">Email</label>

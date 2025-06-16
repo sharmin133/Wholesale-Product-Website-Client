@@ -1,15 +1,19 @@
 import axios from 'axios';
-import React from 'react';
+import React, {  useContext } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from '../Context/AuthContext';
 
 const AddProduct = () => {
+
+ const{user}=useContext(AuthContext)
 
     const handleAddProductForm=e=>{
            e.preventDefault();
         const form=e.target;
         const formData= new FormData(form);
-        const newProduct=Object.fromEntries(formData.entries());
+      const newProduct=Object.fromEntries(formData.entries());
+        
         console.log(newProduct)
        
 
@@ -24,10 +28,12 @@ const AddProduct = () => {
     }
 
 
-
     return (
        <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-2xl mt-10">
           <ToastContainer position="top-center" autoClose={3000} />
+          {
+        user?.role === 'brand' ? (
+          <>
      
       <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Submit a New Product</h2>
       <form onSubmit={handleAddProductForm} className="space-y-5">
@@ -92,6 +98,9 @@ const AddProduct = () => {
           <input type="number" name="rating" min="1" max="5" required className="w-full border p-2 rounded"  placeholder="rating " />
         </div>
 
+<label  className="label">User Email</label>
+        <input  name='email' type="email" className="input input-bordered w-full" defaultValue={user.email} readOnly  />
+
        
         <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold transition">
           Add Product
@@ -104,6 +113,14 @@ const AddProduct = () => {
           This section includes details that help buyers understand your product. Make sure to upload a clear image, provide accurate quantities, describe the product briefly, and categorize it correctly. Minimum selling quantity ensures wholesale compliance.
         </p>
       </div>
+
+       </>
+        ) : (
+          <p className="text-center text-red-600 font-semibold">
+            Only Brandized users can add products.
+          </p>
+        )
+      }
     </div>
     );
 };
