@@ -10,7 +10,15 @@ const AllProduct = () => {
     const products=useLoaderData();
     const[tableView,setTableView]=useState(false);
 
+const [showAvailableOnly, setShowAvailableOnly] = useState(false);
 
+const handleFilterToggle = () => {
+  setShowAvailableOnly(!showAvailableOnly);
+};
+
+ const filteredProducts = showAvailableOnly
+    ? products.filter(product => product.minimum_selling_quantity > 100)
+    : products;
  
     const handletoggle=()=>{
         setTableView(!tableView);
@@ -22,11 +30,26 @@ const AllProduct = () => {
             <title>All Products | PrimeGo</title>
           </Helmet>
 
-             <label className="flex items-center gap-2 cursor-pointer">
+        <div className='flex gap-3'>
+
+            <div>
+            <button
+  onClick={handleFilterToggle}
+  className="mb-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+>
+  {showAvailableOnly ? 'Show All Products' : 'Show Available Products'}
+</button>
+          </div>
+
+
+          <div>
+               <label className="flex items-center gap-2 cursor-pointer">
         <span>Card View</span>
         <input type="checkbox" checked={tableView} onChange={handletoggle} className="toggle" />
         <span>Table View</span>
       </label>
+          </div>
+        </div>
       {tableView?(
  <div className="overflow-x-auto p-2">
       <table className="table-fixed w-full text-sm md:text-base">
@@ -40,7 +63,7 @@ const AllProduct = () => {
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <tr key={product._id} className=" text-center">
               <td className="hidden md:table-cell px-2 py-2">
                 <img src={product.price} alt="" className="w-60 h-40 object-cover rounded-xl mx-auto shadow-2xl"/>
@@ -63,7 +86,7 @@ const AllProduct = () => {
 
 
 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-  {products.map((product) => (
+  {filteredProducts.map((product) => (
     <div  key={product._id} className='rounded-lg shadow-lg'>
     <div key={product._id}className=" p-4 flex items-center gap-3">
       <img src={product.photo} alt="" className="w-40 h-40 object-cover rounded-md mb-4 "/>

@@ -1,7 +1,6 @@
 import Lottie from 'lottie-react';
 import React from 'react';
-import { useNavigate } from 'react-router';
-// import notfound from '../assets/Lotties/notfound.json'
+import { useNavigate } from 'react-router'; 
 import notFound from '../../src/assets/lotties/error.json'
 
 const NotFound = () => {

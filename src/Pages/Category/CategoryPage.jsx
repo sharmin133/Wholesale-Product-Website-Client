@@ -1,4 +1,4 @@
-// src/Pages/Category/CategoryProducts.jsx
+
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { useParams } from 'react-router';
@@ -20,7 +20,7 @@ const CategoryPage = () => {
       <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
         {products.map(product => (
           <div key={product._id} className="card w-80 bg-base-100 shadow-xl">
-            <figure><img src={product.image} alt='' /></figure>
+            <figure><img src={product.photo} alt='' /></figure>
             <div className="card-body">
               <h2 className="card-title">{product.name}</h2>
               <p><strong>Brand:</strong> {product.brand}</p>

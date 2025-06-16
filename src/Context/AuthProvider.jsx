@@ -33,16 +33,7 @@ const googleSignIn=()=>{
     setLoading(true)
     return signInWithPopup(auth,googleAuthProvider)
 }
-    // useEffect(()=>{
-    //     const unSubscribe=onAuthStateChanged(auth,currentUser=>{
-    //         setUser(currentUser)
-    //         setLoading(false)
-
-    //     })
-    //     return ()=>{
-    //         unSubscribe();
-    //     }
-    // },[])
+  
 
     useEffect(() => {
   const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -53,6 +44,8 @@ const googleSignIn=()=>{
         const dbUser = res.data;
         setUser({
           ...currentUser,
+          displayName: currentUser.displayName || dbUser?.name,
+          name: dbUser?.name || currentUser.displayName,
           role: dbUser?.role || 'normal', 
         });
       } catch (err) {
@@ -63,18 +56,18 @@ const googleSignIn=()=>{
     }
     setLoading(false);
 
-    if(currentUser?.email){
-        const userData={email:currentUser.email};
-        axios.post('http://localhost:3000/jwt',userData,{
-            withCredentials:true
-        })
+  //   if(currentUser?.email){
+  //       const userData={email:currentUser.email};
+  //       axios.post('http://localhost:3000/jwt',userData,{
+  //           withCredentials:true
+  //       })
         
-        .then(res=>{
-            console.log(res.data)
-        })
-        .catch(error=>console.log(error))
-    }
-  });
+  //       .then(res=>{
+  //           console.log(res.data)
+  //       })
+  //       .catch(error=>console.log(error))
+  //   }
+   });
 
   return () => unSubscribe();
 }, []);

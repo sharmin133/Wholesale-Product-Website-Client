@@ -7,12 +7,17 @@ import { AuthContext } from '../Context/AuthContext';
 const AddProduct = () => {
 
  const{user}=useContext(AuthContext)
+ console.log(user.name)
+ console.log(user.role)
 
     const handleAddProductForm=e=>{
            e.preventDefault();
         const form=e.target;
         const formData= new FormData(form);
       const newProduct=Object.fromEntries(formData.entries());
+
+        newProduct.main_quantity = Number(newProduct.main_quantity);
+  newProduct.min_selling_quantity = Number(newProduct.min_selling_quantity);
         
         console.log(newProduct)
        
@@ -44,7 +49,7 @@ const AddProduct = () => {
       
         <div>
           <label className="block font-medium text-gray-700 mb-1">Product Title</label>
-          <input type="text" name="name" required className="w-full border p-2 rounded"  placeholder="Name" />
+         <input type="text" name="product_name" required className="w-full border p-2 rounded" placeholder="Product Name" />
         </div>
 
       
@@ -100,8 +105,8 @@ const AddProduct = () => {
 
 <label  className="label">User Email</label>
         <input  name='email' type="email" className="input input-bordered w-full" defaultValue={user.email} readOnly  />
-
-       
+ <label  className="label">User Name</label>
+        <input name='name' type="text" className="input input-bordered w-full" defaultValue={user.name} readOnly />
         <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold transition">
           Add Product
         </button>

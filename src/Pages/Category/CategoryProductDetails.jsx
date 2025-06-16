@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, {  useContext } from 'react';
 import { Link } from 'react-router';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
@@ -11,7 +11,7 @@ const CategoryProductDetails = () => {
 
 
     const product=useLoaderData();
-    const {user}=use(AuthContext);
+    const {user}=useContext(AuthContext);
     const[quantity,SetIsQuantity]=useState(1)
 
     const handleIncreaseQuantity=()=>{
@@ -31,7 +31,7 @@ const CategoryProductDetails = () => {
     }
 
 
-const handleBuy = (e) => {
+const handleBuy = async(e) => {
   e.preventDefault();
 
   const minSellingQty = parseInt(product.min_selling_quantity);
@@ -41,26 +41,43 @@ const handleBuy = (e) => {
     return;
   }
 
-  axios.patch(`http://localhost:3000/products/buy/${product._id}`, { quantityToBuy: quantity })
+ try{
+   axios.patch(`http://localhost:3000/products/buy/${product._id}`, { quantityToBuy: quantity })
     .then(result => {
       console.log(result)
       toast.success('Purchase successful!');
       
     })
-    .catch(error => {
+   const { _id, ...productData } = product;
+
+const purchaseData = {
+  ...productData, 
+  productId:_id,
+  email: user.email,
+  name: user.displayName,
+  quantityBought: quantity.toString(),
+  date: new Date().toISOString(),
+};
+
+await axios.post("http://localhost:3000/purchases", purchaseData);
+ } catch(error) {
       toast.error(error);
-    });
+    };
 };
 
 const handleForm=e=>{
   e.preventDefault();
+  const name=e.target.name.value;
+  const email=e.target.email.value;
+  console.log(name,email)
+
 }
 
 
     return (
       <div className="max-w-3xl mx-auto my-10 p-6 bg-white shadow-lg rounded-2xl">
       <div className="flex flex-col md:flex-row gap-6 items-center">
-        <img src={product.image} alt={product.name} className="w-64 h-64 object-cover rounded-xl shadow" />
+        <img src={product.photo} alt={product.name} className="w-64 h-64 object-cover rounded-xl shadow" />
         <div className="flex-1 space-y-3">
           <h2 className="text-3xl font-bold">{product.name}</h2>
           <p><span className="font-semibold">Brand:</span> {product.brand}</p>
@@ -80,8 +97,8 @@ const handleForm=e=>{
               <h3 className="text-lg font-bold mb-2">Purchase Product</h3>
              <form onSubmit={handleForm}>
               <div className="space-y-2">
-                <input className="input input-bordered w-full" value={user?.displayName} readOnly />
-                <input className="input input-bordered w-full" value={user?.email} readOnly />
+                <input name='name' className="input input-bordered w-full" defaultValue={user?.displayName} readOnly />
+                <input name='email' className="input input-bordered w-full" defaultValue={user?.email} readOnly />
 
                 <div className="flex items-center gap-2">
                   <h2>Quantity:</h2>

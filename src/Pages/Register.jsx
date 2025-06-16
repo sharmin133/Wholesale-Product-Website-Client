@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
 
@@ -28,23 +29,37 @@ const Register = () => {
       setErrorMessage('Password must have one lowercase, one uppercase, and 6 characters or longer.');
       return;
     }
-
-         createUser(email,password)
-     .then(result=>{
-        console.log(result.user)
-        toast.success('User has been created successfully.')
-         axios.post('http://localhost:3000/users', {
+createUser(email, password)
+  .then(result => {
+    updateProfile(result.user, {
+      displayName: name
+      
+    })
+    
+    .then(() => {
+      toast.success('User has been created successfully.');
+      
+      // Save user info to DB
+      axios.post('http://localhost:3000/users', {
         uid: result.user.uid,
         name,
         email,
         role,
-      })
-     })
-     .catch(error=>{
-        console.log(error)
-        setErrorMessage(error.message)
-        toast.error(error.message)
-     })
+      });
+
+    })
+    .catch(error => {
+      console.error("Profile update failed", error);
+    });
+  })
+  .catch(error => {
+    console.log(error);
+    setErrorMessage(error.message);
+    toast.error(error.message);
+  });
+
+
+
     }
 
     
@@ -69,11 +84,11 @@ const Register = () => {
     <option value="brand">Brandized User</option>
   </select>
             <label className="label">Name</label>
-          <input type="text" name='name' className="input" placeholder="Your Name" />
+          <input type="text" name='name' className="input" placeholder="Your Name" required />
           <label className="label">Email</label>
-          <input type="email"  name='email' className="input" placeholder="Email" />
+          <input type="email"  name='email' className="input" placeholder="Email" required />
           <label className="label">Password</label>
-          <input type="password" name='password' className="input" placeholder="Password" />
+          <input type="password" name='password' className="input" placeholder="Password" required />
           <div><a className="link link-hover">Forgot password?</a></div>
           <button className="btn btn-neutral mt-4">Register</button>
         </form>
