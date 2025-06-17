@@ -5,6 +5,7 @@ import AutoPlay from './Autoplay/Autoplay';
 import BannerDiscount from './bannerDsicount/BannerDiscount';
 import TopItems from './TopItems/TopItems';
 
+
 const Home = () => {
     return (
         <div className='bg-sky-50'>
@@ -12,7 +13,8 @@ const Home = () => {
          <div> <Categories></Categories></div>
 
          <div> <BannerDiscount></BannerDiscount> </div>
-
+        
+<div> <TopItems></TopItems> </div>
 
           <div className=' mx-10 mt-10 shadow-sm'>
             <h2 className=' text-3xl  md:text-5xl text-center font-bold text-blue-800 p-4'>Know Before You Nest </h2>
