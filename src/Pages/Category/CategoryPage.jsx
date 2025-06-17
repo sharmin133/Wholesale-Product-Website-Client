@@ -1,13 +1,16 @@
 
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
+import { use, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router';
 import { useParams } from 'react-router';
 import ReactStars from 'react-stars';
+import { AuthContext } from '../../Context/AuthContext';
 
 
 const CategoryPage = () => {
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
+   const navigate = useNavigate();
+   const{user}=use(AuthContext)
 
   useEffect(() => {
     fetch(`http://localhost:3000/products/category/${categoryName}`)
@@ -39,9 +42,20 @@ const CategoryPage = () => {
             
               
               <div className="card-actions justify-end">
-                <Link to={`/products/${product._id}`} >
-                <button className="btn btn-primary">Details</button>
-                </Link>
+               
+
+                 <button
+                  onClick={() => {
+                    if (!user) {
+                      navigate('/login', { state: { from: `/products/${product._id}` } });
+                    } else {
+                      navigate(`/products/${product._id}`);
+                    }
+                  }}
+                  className="btn btn-sm  md:btn-lg btn-primary"
+                >
+                 Details More
+                </button>
               </div>
             </div>
           </div>

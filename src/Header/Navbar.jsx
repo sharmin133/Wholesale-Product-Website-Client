@@ -1,6 +1,6 @@
 import React from 'react';
 import { use } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import "./navbar.css"
 
@@ -13,25 +13,39 @@ const Navbar = () => {
 
      <li><NavLink to='/' >Home</NavLink></li>
      <li><NavLink to='/categories' >Categories</NavLink></li>
-     <li><NavLink  to='/login' >Login</NavLink></li>
+     {/* <li><NavLink  to='/login' >Login</NavLink></li> */}
      <li><NavLink  to='/register' >Register</NavLink></li>
-     <li> <NavLink  to='/addProduct' >Add Product</NavLink></li>
-     <li> <NavLink  to='/myProduct' >My Product</NavLink></li>
-     <li><NavLink to='/allProduct'> All Product</NavLink></li>
-     <li><NavLink to='/updatedProduct/:id'> updated Product</NavLink></li>
-     <li><NavLink to='/carts' > Cart</NavLink> </li>
-   
+     
     
+     <li><NavLink to='/updatedProduct/:id'> updated Product</NavLink></li>
+    
+   
+    {
+          user&&
+          <>  
+
+             <li> <NavLink  to='/addProduct' >Add Product</NavLink></li>
+             <li><NavLink to='/allProduct'> All Product</NavLink></li>
+             <li> <NavLink  to='/myProduct' >My Product</NavLink></li>
+              <li><NavLink to='/carts' > Cart</NavLink> </li>
+
+        
+     
+      </>
+        }
     </>
+
+
+
   )
 
-  const handleLogOut=()=>{
+    const handleSignOut=()=>{
     logOutUser()
-    .then(result=>{
-      console.log(result.user)
-      .catch(error=>{
-        console.log(error)
-      })
+    .then(()=>{
+      console.log('signout successfully')
+    })
+    .catch(error=>{
+      console.log(error)
     })
   }
 
@@ -52,7 +66,7 @@ const Navbar = () => {
       </ul>
     </div>
     <div className='flex justify-between'>
-      <div> <img className='w-12 h-12' src="/Allimage/logo.png" alt="" /></div>
+      <div> <img className='w-12 h-12 ' src="/Allimage/logo.png" alt="" /></div>
       <a className="btn btn-ghost text-xl">PrimeGo</a>
     </div>
   </div>
@@ -67,16 +81,19 @@ const Navbar = () => {
   </div>
   <div className="navbar-end">
   
-  {
-    user? <button className='btn' onClick={handleLogOut}> Log Out</button>:
-    <>
-     <NavLink className='btn'  to='/login' >Login</NavLink>
-       <NavLink  className='btn' to='/register' >Register</NavLink>
-      
+   {user?
+        <div className='flex gap-2 p-2'>
 
-
-    </>
-  }
+          <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
+             <img className='md:w-12 md:h-12 w-8 h-8 rounded-full border-2 border-green-500 ' src={user.photoURL} alt="" />
+          </div>
+          
+        <a className="btn bg-blue-600 text-white rounded-2xl p-2" onClick={handleSignOut}><span className='text-2xl sm:text-xl'>Log Out</span></a>
+        </div>
+          :<div className='flex gap-2 '>
+            <div> <Link to='/register' ><span className=' md:text-2xl bg-blue-600 text-sm text-white rounded-2xl px-4 py-2 md:font-medium'> Sign Up</span></Link></div>
+           <div> <Link to='/login' ><span className=' md:text-2xl text-sm bg-blue-600 text-white rounded-2xl px-4 py-2 md:font-medium'> Log In</span></Link></div>
+            </div>}
 
 
   </div>

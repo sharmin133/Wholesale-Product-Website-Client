@@ -35,8 +35,8 @@ const Categories = () => {
  <div className="card bg-base-100 w-96 shadow-sm">
   <figure className="px-10 pt-10">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes"
+      src="/Allimage/Home & Kitchen Appliances Products.jpg"
+      alt=""
       className="rounded-xl" />
   </figure>
   <div className="card-body items-center text-center">
@@ -50,8 +50,8 @@ const Categories = () => {
  <div className="card bg-base-100 w-96 shadow-sm">
   <figure className="px-10 pt-10">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes"
+      src="/Allimage/Fashion & Apparel Products.jpg"
+      alt=""
       className="rounded-xl" />
   </figure>
   <div className="card-body items-center text-center">
@@ -65,8 +65,8 @@ const Categories = () => {
  <div className="card bg-base-100 w-96 shadow-sm">
   <figure className="px-10 pt-10">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes"
+      src="/Allimage/Industrial Machinery & Tools Products.jpg"
+      alt=""
       className="rounded-xl" />
   </figure>
   <div className="card-body items-center text-center">
@@ -83,8 +83,8 @@ const Categories = () => {
 
   <figure className="px-10 pt-10">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes"
+      src="/Allimage/Health & Beauty.jpg"
+      alt=""
       className="rounded-xl" />
   </figure>
   <div className="card-body items-center text-center">
@@ -99,8 +99,8 @@ const Categories = () => {
  <div className="card bg-base-100 w-96 shadow-sm">
   <figure className="px-10 pt-10">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes"
+      src="/Allimage/Automotive Parts.jpg"
+      alt=""
       className="rounded-xl" />
   </figure>
   <div className="card-body items-center text-center">
@@ -115,12 +115,12 @@ const Categories = () => {
  <div className="card bg-base-100 w-96 shadow-sm">
   <figure className="px-10 pt-10">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes"
+      src="/Allimage/Office Supplies & Stationery.jpg"
+      alt=""
       className="rounded-xl" />
   </figure>
   <div className="card-body items-center text-center">
-    <h2 className="card-title"> Office Supplies & Stationery</h2>
+    <h2 className="card-title">Office Supplies & Stationery</h2>
   </div>
 </div>
 </Link>

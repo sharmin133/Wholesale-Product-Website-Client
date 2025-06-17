@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { use } from 'react';
 import { AuthContext } from '../Context/AuthContext';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 
 const LogIn = () => {
@@ -9,7 +9,9 @@ const LogIn = () => {
     const {logInUser,googleSignIn}=use(AuthContext)
      const[errorMessage,setErrorMessage]=useState(false)
      const [successMessage, setSuccessMessage]=useState('')
-
+ const  navigate=useNavigate();
+   const location=useLocation()
+    const from = location.state?.from || '/'; 
 
     const handleLogIn=e=>{
         e.preventDefault();
@@ -24,6 +26,7 @@ const LogIn = () => {
         .then(result=>{
             console.log(result.user)
               toast.success('User has been login successfully.')
+               navigate(from, { replace: true })
         })
         .catch(error=>{
            setErrorMessage(error.message)
@@ -38,10 +41,11 @@ const LogIn = () => {
         .then(result=>{
             console.log(result.user)
              toast.success('User has been login successfully.')
-            .catch(error=>{
+              navigate(from, { replace: true })
+        })
+        .catch(error=>{
               toast.error(error.message)
             })
-        })
     }
     return (
         <div className="hero bg-base-200 min-h-screen">

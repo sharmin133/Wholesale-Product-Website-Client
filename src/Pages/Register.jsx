@@ -1,6 +1,6 @@
 import React, {  useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
@@ -12,12 +12,15 @@ const Register = () => {
  const[errorMessage,setErrorMessage]=useState(false)
  const [successMessage, setSuccessMessage]=useState('')
 
-    
+     const  navigate=useNavigate();
+   const location=useLocation()
+    const from = location.state?.from || '/'; 
       const handleRegister=e=>{
         e.preventDefault();
         const form=e.target;
         const name=form.name.value;
         const email=form.email.value;
+          const user_photo = form.user_photo.value;
         const password=form.password.value;
           const role = form.role.value;
         console.log(name,email,password,role )
@@ -32,12 +35,14 @@ const Register = () => {
 createUser(email, password)
   .then(result => {
     updateProfile(result.user, {
-      displayName: name
+      displayName: name,
+      photoURL: user_photo
       
     })
     
     .then(() => {
       toast.success('User has been created successfully.');
+      navigate(from, { replace: true })
       
       // Save user info to DB
       axios.post('http://localhost:3000/users', {
@@ -83,8 +88,11 @@ createUser(email, password)
     <option value="normal">Regular User</option>
     <option value="brand">Brandized User</option>
   </select>
+
             <label className="label">Name</label>
           <input type="text" name='name' className="input" placeholder="Your Name" required />
+           <label className="label">Photo URL</label>
+          <input type="text" className="input" name="user_photo" placeholder="Your photo URL" />
           <label className="label">Email</label>
           <input type="email"  name='email' className="input" placeholder="Email" required />
           <label className="label">Password</label>

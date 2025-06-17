@@ -61,8 +61,8 @@ const MyProduct = () => {
         <thead>
           <tr className="bg-amber-300 text-center">
             <th className="hidden md:table-cell"></th>
-            <th className="text-blue-800 font-bold md:text-2xl text-xl">name</th>
-            <th className="hidden md:table-cell text-cyan-800 md:text-2xl text-xl">brand</th>
+            <th className="text-blue-800 font-bold md:text-2xl text-xl">Name</th>
+            <th className="hidden md:table-cell text-cyan-800 md:text-2xl text-xl">Brand</th>
             <th className="text-amber-800 md:text-2xl text-xl">Price</th>
             <th className="text-center"></th>
           </tr>
@@ -77,12 +77,12 @@ const MyProduct = () => {
                   className="w-60 h-40 object-cover rounded-xl mx-auto shadow-2xl"
                 />
               </td>
-              <td className="text-blue-800 font-bold px-2 py-2 md:text-2xl">{item.name}</td>
+              <td className="text-blue-800 font-bold px-2 py-2 md:text-2xl">{item.product_name}</td>
               <td className="hidden md:table-cell md:text-xl text-cyan-800 px-2 py-2">{item.brand}</td>
               <td className="text-amber-800 px-2 py-2 md:text-xl">${item.price}</td>
               <td className="px-2 py-2">
                   <button
-                    className="btn btn-sm  md:btn-lg btn-primary w-full md:w-auto"
+                    className="btn btn-sm  md:btn-lg bg-red-400 w-full md:w-auto"
                     onClick={() => handleDeleteData(item._id)}
                   >
                     Delete

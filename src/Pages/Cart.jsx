@@ -4,10 +4,13 @@ import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import Swal from 'sweetalert2';
 
+
+
 const Cart = () => {
   const { user } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
+    
 
  useEffect(() => {
   if (user?.email) {

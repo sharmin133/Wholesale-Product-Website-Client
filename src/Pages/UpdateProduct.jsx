@@ -4,21 +4,21 @@ import { Link, useLoaderData } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 
 const UpdateProduct = () => {
-const {_id, main_quantity, name,photo,min_selling_quantity,brand,category,rating}=useLoaderData();
+const {_id, main_quantity, product_name,photo,min_selling_quantity,brand,category,rating}=useLoaderData();
   const handleUpdateProductForm=e=>{
            e.preventDefault();
-        const form=e.target;
+       const form=e.target;
         const formData= new FormData(form);
-        const updateProduct=Object.fromEntries(formData.entries());
+      const updateProduct=Object.fromEntries(formData.entries());
+
+        updateProduct.main_quantity = Number(updateProduct.main_quantity);
+  updateProduct.min_selling_quantity = Number(updateProduct.min_selling_quantity);
+  updateProduct.price = Number(updateProduct.price);
+updateProduct.rating = Number(updateProduct.rating);
+        
+       
        
 
-    //    axios.put(`http://localhost:3000/products/${_id}`,newProduct)
-    //    .then(data=>{
-    //     if(data.data.modifiedCount){
-    //           toast.success('Product added successfully!')
-    //          form.reset()
-    //     }
-    //    })
 
 
     fetch(`http://localhost:3000/products/${_id}`,{
@@ -50,7 +50,7 @@ const {_id, main_quantity, name,photo,min_selling_quantity,brand,category,rating
       
         <div>
           <label className="block font-medium text-gray-700 mb-1">Product Title</label>
-          <input type="text" name="name" required className="w-full border p-2 rounded"  placeholder="Name" defaultValue={name} />
+          <input type="text" name="product_name" required className="w-full border p-2 rounded"  placeholder="Name" defaultValue={product_name} />
         </div>
 
       
