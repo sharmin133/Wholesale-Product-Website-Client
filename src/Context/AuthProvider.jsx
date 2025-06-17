@@ -43,11 +43,11 @@ const googleSignIn=()=>{
         const res = await axios.get(`http://localhost:3000/users/${currentUser.email}`);
         const dbUser = res.data;
         setUser({
-          ...currentUser,
-          displayName: currentUser.displayName || dbUser?.name,
-          name: dbUser?.name || currentUser.displayName,
-          role: dbUser?.role || 'normal', 
-        });
+  ...currentUser,
+  displayName: currentUser.displayName || dbUser?.name,
+  name: dbUser?.name || currentUser.displayName,
+  role: dbUser?.role,  // ✅ Fix this line
+});
       } catch (err) {
         console.error('Failed to fetch user role:', err);
       }

@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { useParams } from 'react-router';
+import ReactStars from 'react-stars';
 
 
 const CategoryPage = () => {
@@ -28,6 +29,15 @@ const CategoryPage = () => {
               <p><strong>Min Quantity:</strong> {product.minQuantity}</p>
               <p>{product.description}</p>
               <p><strong>Price:</strong> ${product.price}</p>
+      <ReactStars
+  count={5}
+  value={product.rating}
+  edit={false}
+  size={24}
+  color2={'#ffd700'} // gold color
+/>
+            
+              
               <div className="card-actions justify-end">
                 <Link to={`/products/${product._id}`} >
                 <button className="btn btn-primary">Details</button>

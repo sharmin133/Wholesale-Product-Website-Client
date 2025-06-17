@@ -6,7 +6,6 @@ const Categories = () => {
 
 
 
-
     return (
         <div>
             <h2 className='text-5xl text-center'>All Categories</h2>

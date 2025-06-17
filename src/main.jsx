@@ -21,6 +21,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import CategoryPage from './Pages/Category/CategoryPage';
 import CategoryProductDetails from './Pages/Category/CategoryProductDetails';
 import Cart from './Pages/Cart';
+import PrivateRoute from './privateRoute/PrivateRoute';
+import Categories from './Pages/Categories';
 
 
 const router = createBrowserRouter([
@@ -39,9 +41,13 @@ const router = createBrowserRouter([
   {
     path:'login', element:<LogIn></LogIn>
   },
+  {
+
+    path:'categories', element:<Categories></Categories>
+  },
 
   {
-    path:'addProduct', element:<AddProduct></AddProduct>
+    path:'addProduct', element:<PrivateRoute><AddProduct></AddProduct></PrivateRoute>
   },
   {
     path:'myProduct', element:<MyProduct></MyProduct>

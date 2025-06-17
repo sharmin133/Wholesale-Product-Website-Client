@@ -7,8 +7,6 @@ import { AuthContext } from '../Context/AuthContext';
 const AddProduct = () => {
 
  const{user}=useContext(AuthContext)
- console.log(user.name)
- console.log(user.role)
 
     const handleAddProductForm=e=>{
            e.preventDefault();
@@ -18,6 +16,8 @@ const AddProduct = () => {
 
         newProduct.main_quantity = Number(newProduct.main_quantity);
   newProduct.min_selling_quantity = Number(newProduct.min_selling_quantity);
+  newProduct.price = Number(newProduct.price);
+newProduct.rating = Number(newProduct.rating);
         
         console.log(newProduct)
        

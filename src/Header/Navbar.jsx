@@ -2,6 +2,7 @@ import React from 'react';
 import { use } from 'react';
 import { NavLink } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
+import "./navbar.css"
 
 const Navbar = () => {
 
@@ -11,6 +12,7 @@ const Navbar = () => {
     <>
 
      <li><NavLink to='/' >Home</NavLink></li>
+     <li><NavLink to='/categories' >Categories</NavLink></li>
      <li><NavLink  to='/login' >Login</NavLink></li>
      <li><NavLink  to='/register' >Register</NavLink></li>
      <li> <NavLink  to='/addProduct' >Add Product</NavLink></li>
