@@ -1,12 +1,31 @@
-# React + Vite
+# WholesaleHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
+WholesaleHub is a modern wholesale product marketplace that enables users to browse, add, and manage bulk products efficiently. The platform supports user authentication, role-based access, and a streamlined cart system designed for bulk buyers and sellers.
 
-Currently, two official plugins are available:
+## Live URL
+https://primego-wholesale-website.web.app 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- **User Authentication:** Register and log in with email/password or Google Sign-In.
+- **Role Management:** Assign user roles such as brand owner or normal user automatically on first login.
+- **Product Management:**
+  - Add new products (protected route).
+  - View all products.
+  - Manage personal products (protected route).
+- **Shopping Cart:** Add products to cart for easy bulk ordering.
+- **Protected Routes:** Certain pages like All Products, Add Product, and My Product require login.
+- **Responsive UI:** Clean and responsive interface built with React and Tailwind CSS.
 
-## Expanding the ESLint configuration
+## Technologies & Libraries
+- React (Frontend)
+- React Router (Routing)
+- Firebase Authentication (Email/Password & Google Sign-In)
+- Axios (HTTP requests)
+- React Toastify (Notifications)
+- Tailwind CSS (Styling)
+- SweetAlert2 (Alerts and confirmation dialogs)
+- Node.js & Express (Backend - assumed)
+- MongoDB (Database - assumed)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
