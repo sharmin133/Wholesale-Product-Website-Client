@@ -26,7 +26,9 @@ const LogIn = () => {
         .then(result=>{
             console.log(result.user)
               toast.success('User has been login successfully.')
-               navigate(from, { replace: true })
+               setTimeout(() => {
+  navigate(from, { replace: true });
+}, 1500)
         })
         .catch(error=>{
            setErrorMessage(error.message)
@@ -41,8 +43,9 @@ const LogIn = () => {
         .then(result=>{
             console.log(result.user)
              toast.success('User has been login successfully.')
-              navigate(from, { replace: true })
-        })
+              setTimeout(() => {
+  navigate(from, { replace: true });
+}, 1500)})
         .catch(error=>{
               toast.error(error.message)
             })

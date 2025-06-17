@@ -1,16 +1,26 @@
-import { Link, useLoaderData } from 'react-router';
-import { useState } from 'react';
+import { Link } from 'react-router';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import useAxiosSecure from './hooks/UseAxiosSecure';
 
 const AllProduct = () => {
-  const products = useLoaderData();
+ const [products, setProducts] = useState([]);
   const [tableView, setTableView] = useState(false);
   const [filterAvailable, setFilterAvailable] = useState(false); 
-
+  const axiosSecure=useAxiosSecure()
+  
   const handleTableToggle = () => {
     setTableView(!tableView);
   };
-
+useEffect(() => {
+    axiosSecure.get('/products')
+      .then(res => {
+        setProducts(res.data);
+      })
+      .catch(err => {
+        console.error("Error loading products:", err.response?.data || err.message);
+      });
+  }, [axiosSecure]);
 
   const filteredProducts = filterAvailable
     ? products.filter((product) => product.min_selling_quantity > 100)

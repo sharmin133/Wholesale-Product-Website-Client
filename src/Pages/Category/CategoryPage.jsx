@@ -26,20 +26,19 @@ const CategoryPage = () => {
           <div key={product._id} className="card w-80 bg-base-100 shadow-xl">
             <figure><img src={product.photo} alt='' /></figure>
             <div className="card-body">
-              <h2 className="card-title">{product.name}</h2>
+              <h2 className="card-title">{product.product_name}</h2>
               <p><strong>Brand:</strong> {product.brand}</p>
               <p><strong>Category:</strong> {product.category}</p>
-              <p><strong>Min Quantity:</strong> {product.minQuantity}</p>
-              <p>{product.description}</p>
+              <p><strong>Min Quantity:</strong> {product.min_selling_quantity}</p>
               <p><strong>Price:</strong> ${product.price}</p>
       <ReactStars
   count={5}
   value={product.rating}
   edit={false}
   size={24}
-  color2={'#ffd700'} // gold color
+  color2={'#ffd700'} 
 />
-            
+           
               
               <div className="card-actions justify-end">
                

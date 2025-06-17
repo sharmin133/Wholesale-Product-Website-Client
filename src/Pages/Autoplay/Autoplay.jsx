@@ -12,7 +12,7 @@ const AutoPlay = () => {
     <img
     
      
-       src="/public/Allimage/electronics.jpg"
+       src="/Allimage/ban-1.jpg"
       className="w-full" />
 
 <div className="absolute inset-0 bg-black opacity-20"></div>
@@ -22,18 +22,18 @@ const AutoPlay = () => {
 
   
     <div className="md:text-6xl text-xl flex justify-center items-center gap-2 md:p-4">
-      <p className="text-blue-700 font-bold flex gap-3"><span>Welcome</span> <span className="hidden md:block">to</span> </p>
+      <p className=" text-green-500 font-bold flex gap-3"><span>Welcome</span> <span className="hidden md:block">to</span> </p>
       <p className="md:text-6xl text-xl p-2">
         <span className='font-bold text-pink-600'>Prime</span>
-        <span className='font-medium text-yellow-500'>Go</span>
+        <span className='font-medium text-blue-700'>Go</span>
       </p>
     </div>
 
     <p className=" md:text-3xl text-gray-200 italic">
-      Smart. Simple. <span className="text-teal-200 font-semibold">Stress-free</span> roommate{' '}
+      Bulk Buying. Better Pricing. <span className="text-teal-200 font-semibold">No Hassle</span>
   <span className="inline-block text-yellow-200 font-semibold">
     <Typewriter
-      words={['matching with people you trust.']}
+      words={['Fully Trusted.']}
       loop={true}
       cursor
       cursorStyle="|"
@@ -52,7 +52,7 @@ const AutoPlay = () => {
     <div className="mt-4 flex justify-center">
       <input
         type="text"
-        placeholder="Search by location, preferences, or budget..."
+        placeholder="Search by Name, preferences, or budget..."
         className="w-2/3 md:px-4 md:py-2 rounded-lg border-2 border-teal-600 shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-400"
       />
     </div>
@@ -66,7 +66,7 @@ const AutoPlay = () => {
   </div>
   <div id="slide2" className="carousel-item relative w-full">
     <img
-    src="/AllPictures/wooden-house-at-waters-edge.jpg"
+    src="/Allimage/2108.i305.009.S.m005.c13.realistic sandalwood horizontal poster.jpg"
     
     
       className="w-full" />
@@ -75,8 +75,8 @@ const AutoPlay = () => {
 
 <div className="absolute top-10 left-1/2 transform -translate-x-1/2 text-center p-4 text-white">
 <div className="flex flex-col justify-between items-center">
-  <h2 className=" text-2xl md:text-6xl text-yellow-400 font-bold md:p-4 ">Built for Boundaries and Balance</h2>
-<p className="md:text-2xl md:pt-4  font-medium">With the right person, shared spaces become shared memories. Let us help you find them.</p>
+  <h2 className=" text-2xl md:text-6xl text-yellow-400 font-bold md:p-4 ">We Source. You Save.</h2>
+<p className="md:text-2xl md:pt-4  font-medium">Discover a smarter way to buy in bulk. PrimeGo connects trusted suppliers with smart buyers—no middlemen, no hassle.</p>
 </div>
 
 </div>
@@ -88,7 +88,7 @@ const AutoPlay = () => {
   </div>
   <div id="slide3" className="carousel-item relative w-full">
     <img
-      src="/AllPictures/3d-rendering-loft-luxury-living-room-with-bookshelf.jpg"
+      src="/Allimage/32872.jpg"
       className="w-full" />
 
       <div className="absolute inset-0 bg-black opacity-40"></div>
@@ -97,8 +97,8 @@ const AutoPlay = () => {
 
 
 <div className="flex flex-col justify-between items-center">
-  <h2 className=" text-2xl md:text-6xl text-red-400 font-bold md:p-4 ">More Than Just Rent Sharing</h2>
-<p className="md:text-2xl md:pt-4  font-medium">A modern solution for modern living—where compatibility meets convenience. Find your match, find your home.</p>
+  <h2 className=" text-2xl md:text-6xl text-red-400 font-bold md:p-4 ">Where Restocking Meets Reliability.</h2>
+<p className="md:text-2xl md:pt-4  font-medium"> Manage your inventory effortlessly with our reliable bulk buying platform designed to keep your shelves full and profits growing.</p>
 </div>
 
 </div>
@@ -110,20 +110,12 @@ const AutoPlay = () => {
   </div>
   <div id="slide4" className="carousel-item relative w-full">
     <img
-      src="/AllPictures/a-blue-home-with-snow-covering-the-roof.jpg"
+      src="/Allimage/7728475.jpg"
       className="w-full" />
 
       <div className="absolute inset-0 bg-black opacity-20"></div>
 
 <div className="absolute top-10 left-1/2 transform -translate-x-1/2 text-center p-4 text-white">
-
-
-
-<div className="flex flex-col justify-between items-center">
-  <h2 className=" text-2xl md:text-6xl text-indigo-600 font-bold md:p-4 ">We Match. You Move In.</h2>
-<p className="md:text-2xl md:pt-4  font-medium">Discover a smarter way to share your space. FlatFusion connects like-minded individuals to create harmonious living experiences without the stress.</p>
-</div>
-
 
 
 

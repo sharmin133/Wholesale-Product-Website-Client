@@ -7,18 +7,16 @@ import TopItems from './TopItems/TopItems';
 
 const Home = () => {
     return (
-        <div>
-          {/* <div><AutoPlay></AutoPlay></div> */}
+        <div className='bg-sky-50'>
+          <div><AutoPlay></AutoPlay></div>
          <div> <Categories></Categories></div>
 
          <div> <BannerDiscount></BannerDiscount> </div>
 
-         <div><TopItems></TopItems> </div>
-
 
           <div className=' mx-10 mt-10 shadow-sm'>
             <h2 className=' text-3xl  md:text-5xl text-center font-bold text-blue-800 p-4'>Know Before You Nest </h2>
-            <p className=' text-2xl text-center text-yellow-500'>Common questions and helpful answers for new users.</p>
+            <p className=' text-2xl text-center text-green-500'>Common questions and helpful answers for new users.</p>
 
             <div className="collapse collapse-arrow bg-base-100 border border-base-300">
   <input type="radio" name="my-accordion-2" defaultChecked />

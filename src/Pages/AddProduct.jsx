@@ -1,12 +1,14 @@
-import axios from 'axios';
+
 import React, {  useContext } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../Context/AuthContext';
+import useAxiosSecure from './hooks/UseAxiosSecure';
 
 const AddProduct = () => {
 
  const{user}=useContext(AuthContext)
+   const axiosSecure=useAxiosSecure()
 
     const handleAddProductForm=e=>{
            e.preventDefault();
@@ -22,7 +24,7 @@ newProduct.rating = Number(newProduct.rating);
         console.log(newProduct)
        
 
-       axios.post('http://localhost:3000/products',newProduct)
+       axiosSecure.post('/products',newProduct)
        .then(data=>{
         if(data.data.insertedId){
               toast.success('Product added successfully!')
@@ -34,13 +36,14 @@ newProduct.rating = Number(newProduct.rating);
 
 
     return (
-       <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-2xl mt-10">
+      <div className='bg-yellow-50'>
+         <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-2xl  ">
           <ToastContainer position="top-center" autoClose={3000} />
           {
         user?.role === 'brand' ? (
           <>
      
-      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Submit a New Product</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 mt-10 ">Submit a New Product</h2>
       <form onSubmit={handleAddProductForm} className="space-y-5">
        
        <label className="block font-medium text-gray-700 mb-1">Photo URL</label>
@@ -127,6 +130,7 @@ newProduct.rating = Number(newProduct.rating);
         )
       }
     </div>
+      </div>
     );
 };
 

@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../Context/AuthContext';
-import axios from 'axios';
+
 import { toast, ToastContainer } from 'react-toastify';
 import Swal from 'sweetalert2';
+import useAxiosSecure from './hooks/UseAxiosSecure';
 
 
 
@@ -10,11 +11,12 @@ const Cart = () => {
   const { user } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
+const axiosSecure=useAxiosSecure()
     
 
  useEffect(() => {
   if (user?.email) {
-    axios.get(`http://localhost:3000/purchases/user/${user.email}`)
+    axiosSecure.get(`/purchases/user/${user.email}`)
       .then((res) => {
         setCartItems(res.data);
         setLoading(false);
@@ -24,7 +26,7 @@ const Cart = () => {
         setLoading(false);
       });
   }
-}, [user]);
+}, [user,axiosSecure]);
 
 
 const handleDeleteData = (_id) => {
@@ -68,7 +70,8 @@ const handleDeleteData = (_id) => {
 
 
   return (
-    <div className="max-w-5xl mx-auto p-4">
+    <div className='bg-blue-200'>
+      <div className="max-w-5xl mx-auto p-4">
       <ToastContainer position="top-center" autoClose={3000} />
       <h2 className="text-3xl font-bold mb-6">My Cart</h2>
 
@@ -81,21 +84,23 @@ const handleDeleteData = (_id) => {
           {cartItems.map((item) => (
             <div key={item._id} className="bg-white shadow-md p-4 rounded-lg">
               <img src={item.photo} alt={item.name} className="h-40 w-full object-cover rounded" />
-              <h3 className="text-xl font-bold mt-2">{item.name}</h3>
+              <h3 className="text-xl font-bold mt-2">{item.product_name}</h3>
               <p><strong>Brand:</strong> {item.brand}</p>
               <p><strong>Category:</strong> {item.category}</p>
               <p><strong>Quantity Bought:</strong> {item.quantityBought}</p>
               <p><strong>Min Order:</strong> {item.min_selling_quantity}</p>
               <p><strong>Buy Date:</strong> {new Date(item.date).toLocaleString()}</p>
-              <p className="mt-2">{item.description}</p>
-
+              <p className="mt-2">{item.short_description}</p>
+ 
               <button className="btn btn-error mt-3" onClick={() => handleDeleteData(item._id)}>
                 Remove
               </button>
             </div>
           ))}
         </div>
+
       )}
+    </div>
     </div>
   );
 };

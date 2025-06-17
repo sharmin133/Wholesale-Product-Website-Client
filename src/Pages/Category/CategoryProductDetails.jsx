@@ -5,11 +5,13 @@ import { AuthContext } from '../../Context/AuthContext';
 import { useState } from 'react';
 import {  toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
+import useAxiosSecure from '../hooks/UseAxiosSecure';
+import ReactStars from 'react-stars';
 
 
 const CategoryProductDetails = () => {
 
-
+  const axiosSecure=useAxiosSecure()
     const product=useLoaderData();
     const {user}=useContext(AuthContext);
     const[quantity,SetIsQuantity]=useState(1)
@@ -34,6 +36,7 @@ const CategoryProductDetails = () => {
 const handleBuy = async(e) => {
   e.preventDefault();
 
+
   const minSellingQty = parseInt(product.min_selling_quantity);
 
   if (quantity < minSellingQty) {
@@ -42,7 +45,7 @@ const handleBuy = async(e) => {
   }
 
  try{
-   axios.patch(`http://localhost:3000/products/buy/${product._id}`, { quantityToBuy: quantity })
+   axiosSecure.patch(`/products/buy/${product._id}`, { quantityToBuy: quantity })
     .then(result => {
       console.log(result)
       toast.success('Purchase successful!');
@@ -76,16 +79,24 @@ const handleForm=e=>{
 
     return (
       <div className="max-w-3xl mx-auto my-10 p-6 bg-white shadow-lg rounded-2xl">
+      <h2 className="text-3xl font-bold p-4">{product.product_name}</h2>
       <div className="flex flex-col md:flex-row gap-6 items-center">
-        <img src={product.photo} alt={product.name} className="w-64 h-64 object-cover rounded-xl shadow" />
+        
+        <img src={product.photo} alt={product.name} className="w-96 h-96 object-cover rounded-xl shadow" />
         <div className="flex-1 space-y-3">
-          <h2 className="text-3xl font-bold">{product.name}</h2>
           <p><span className="font-semibold">Brand:</span> {product.brand}</p>
           <p><span className="font-semibold">Category:</span> {product.category}</p>
           <p><span className="font-semibold">Min Order:</span> {product.min_selling_quantity} pcs</p>
           <p><span className="font-semibold">Main quantity:</span> {product.main_quantity} pcs</p>
-          <p className="text-gray-700">{product.description}</p>
-          <p className="text-2xl font-semibold text-green-600">৳ {product.price}</p>
+          <p className="text-2xl font-semibold text-green-600">Price: {product.price}</p>
+         <ReactStars
+  count={5}
+  value={product.rating}
+  edit={false}
+  size={24}
+  color2={'#ffd700'} 
+/>
+                    <p className="text-gray-700">{product.short_description}</p>
       <button className="btn btn-primary mt-4" onClick={() => document.getElementById('buy_modal').showModal()}>
             Buy
           </button>

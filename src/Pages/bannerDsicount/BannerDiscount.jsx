@@ -5,9 +5,9 @@ const BannerDiscount = () => {
        
         <div className="relative w-full h-[500px] md:h-[600px]">
       {/* Background Image */}
-      <img
+      <img 
         src="/Allimage/banner-2.jpg"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover shadow-lg rounded-2xl "
         alt="Banner"
       />
 

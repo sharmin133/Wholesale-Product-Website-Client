@@ -44,3 +44,4 @@ axiosInstance.interceptors.request.use(config => {
  };
  
  export default useAxiosSecure;
+

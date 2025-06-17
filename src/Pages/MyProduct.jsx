@@ -18,7 +18,7 @@ const MyProduct = () => {
     if (user?.email) {
         
        axiosSecure.get(`/products/email/${user.email}`,{
-        withCredentials:true
+      
        })
   .then(res => setItems(res.data));
     }

@@ -38,16 +38,16 @@ const googleSignIn=()=>{
     useEffect(() => {
   const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
     setUser(null); 
-    if (currentUser?.email) {
+       if (currentUser?.email) {
       try {
         const res = await axios.get(`http://localhost:3000/users/${currentUser.email}`);
         const dbUser = res.data;
         setUser({
-  ...currentUser,
-  displayName: currentUser.displayName || dbUser?.name,
-  name: dbUser?.name || currentUser.displayName,
-  role: dbUser?.role,  // ✅ Fix this line
-});
+          ...currentUser,
+          displayName: currentUser.displayName || dbUser?.name,
+          name: dbUser?.name || currentUser.displayName,
+          role: dbUser?.role || 'normal', 
+        });
       } catch (err) {
         console.error('Failed to fetch user role:', err);
       }
