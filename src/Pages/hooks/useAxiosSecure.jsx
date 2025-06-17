@@ -6,7 +6,7 @@ import { AuthContext } from '../../Context/AuthContext';
 
 
     const axiosInstance = axios.create({
-    baseURL:'http://localhost:3000',
+    baseURL:'https://wholesale-product-server.vercel.app',
     withCredentials: true,
 })
 

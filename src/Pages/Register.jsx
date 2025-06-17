@@ -47,7 +47,7 @@ createUser(email, password)
 }, 1500)
       
       // Save user info to DB
-      axios.post('http://localhost:3000/users', {
+      axios.post('https://wholesale-product-server.vercel.app/users', {
         uid: result.user.uid,
         name,
         email,

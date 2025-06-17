@@ -13,7 +13,7 @@ const CategoryPage = () => {
    const{user}=use(AuthContext)
 
   useEffect(() => {
-    fetch(`http://localhost:3000/products/category/${categoryName}`)
+    fetch(`https://wholesale-product-server.vercel.app/products/category/${categoryName}`)
       .then(res => res.json())
       .then(data => setProducts(data));
   }, [categoryName]);

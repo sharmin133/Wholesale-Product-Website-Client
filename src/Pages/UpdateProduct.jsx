@@ -21,7 +21,7 @@ updateProduct.rating = Number(updateProduct.rating);
 
 
 
-    fetch(`http://localhost:3000/products/${_id}`,{
+    fetch(`https://wholesale-product-server.vercel.app/products/${_id}`,{
             method:'PUT',
             headers:{
                 'content-type':"application/json"

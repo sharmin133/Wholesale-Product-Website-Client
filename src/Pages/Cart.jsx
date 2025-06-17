@@ -41,7 +41,7 @@ const handleDeleteData = (_id) => {
   }).then((result) => {
     if (result.isConfirmed) {
       console.log('Deleting item with ID:', _id);
-      fetch(`http://localhost:3000/purchases/${_id}`, {
+      fetch(`https://wholesale-product-server.vercel.app/purchases/${_id}`, {
         method: "DELETE"
       })
         .then(res => res.json())

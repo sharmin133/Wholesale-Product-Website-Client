@@ -62,7 +62,7 @@ const purchaseData = {
   date: new Date().toISOString(),
 };
 
-await axios.post("http://localhost:3000/purchases", purchaseData);
+await axios.post("https://wholesale-product-server.vercel.app/purchases", purchaseData);
  } catch(error) {
       toast.error(error);
     };
