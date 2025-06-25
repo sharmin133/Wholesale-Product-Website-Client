@@ -1,9 +1,12 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 
 const UpdateProduct = () => {
+   useEffect(() => {
+      document.title = "Update Product | PrimeGo ";
+    }, []);
 const {_id, main_quantity, product_name,photo,min_selling_quantity,brand,category,rating}=useLoaderData();
   const handleUpdateProductForm=e=>{
            e.preventDefault();

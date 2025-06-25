@@ -8,6 +8,9 @@ import useAxiosSecure from './hooks/UseAxiosSecure';
 
 
 const Cart = () => {
+   useEffect(() => {
+      document.title = "Cart | PrimeGo ";
+    }, []);
   const { user } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);

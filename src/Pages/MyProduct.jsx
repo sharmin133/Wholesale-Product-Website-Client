@@ -6,7 +6,9 @@ import useAxiosSecure from './hooks/UseAxiosSecure';
 
 
 const MyProduct = () => {
-
+ useEffect(() => {
+    document.title = "My Product| PrimeGo ";
+  }, []);
     const { user } = useContext(AuthContext);
     // console.log(user.accessToken)
   const [items, setItems] = useState([]);

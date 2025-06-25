@@ -1,12 +1,15 @@
 
-import React, {  useContext } from 'react';
+import React, {  useContext, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../Context/AuthContext';
 import useAxiosSecure from './hooks/UseAxiosSecure';
+import { Zoom } from 'react-awesome-reveal';
 
 const AddProduct = () => {
-
+ useEffect(() => {
+    document.title = "Add Product | PrimeGo ";
+  }, []);
  const{user}=useContext(AuthContext)
    const axiosSecure=useAxiosSecure()
 
@@ -37,6 +40,7 @@ newProduct.rating = Number(newProduct.rating);
 
     return (
       <div className='bg-yellow-50'>
+         <Zoom triggerOnce>
          <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-2xl  ">
           <ToastContainer position="top-center" autoClose={3000} />
           {
@@ -130,6 +134,7 @@ newProduct.rating = Number(newProduct.rating);
         )
       }
     </div>
+    </Zoom>
       </div>
     );
 };

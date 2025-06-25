@@ -1,4 +1,4 @@
-import React, {  useContext } from 'react';
+import React, {  useContext, useEffect } from 'react';
 import { Link } from 'react-router';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
@@ -10,7 +10,9 @@ import ReactStars from 'react-stars';
 
 
 const CategoryProductDetails = () => {
-
+ useEffect(() => {
+    document.title = "Category Details | PrimeGo ";
+  }, []);
   const axiosSecure=useAxiosSecure()
     const product=useLoaderData();
     const {user}=useContext(AuthContext);

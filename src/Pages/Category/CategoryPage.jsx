@@ -7,6 +7,9 @@ import { AuthContext } from '../../Context/AuthContext';
 
 
 const CategoryPage = () => {
+   useEffect(() => {
+      document.title = "Category Product | PrimeGo ";
+    }, []);
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
    const navigate = useNavigate();

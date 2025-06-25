@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { use } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
+import { Zoom } from 'react-awesome-reveal';
 
 const LogIn = () => {
+   useEffect(() => {
+      document.title = "Login | PrimeGo ";
+    }, []);
 
     const {logInUser,googleSignIn}=use(AuthContext)
      const[errorMessage,setErrorMessage]=useState(false)
@@ -53,7 +57,7 @@ const LogIn = () => {
     return (
         <div className="hero bg-base-200 min-h-screen">
               <ToastContainer position="top-center" autoClose={3000} />
-
+ <Zoom triggerOnce>
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <div className="card-body">
            <h1 className="text-5xl font-bold">Login Now </h1>
@@ -76,6 +80,7 @@ const LogIn = () => {
       </div>
   
   </div>
+  </Zoom>
 </div>
     );
 };

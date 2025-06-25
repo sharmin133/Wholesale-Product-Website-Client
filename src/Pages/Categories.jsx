@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router';
+import { motion } from 'framer-motion';
 
 
 const Categories = () => {
-
+  useEffect(() => {
+    document.title = "Categories | PrimeGo";
+  }, []);
 
 
     return (
         <div className='bg-blue-50'>
           <div className='lg:ml-20 ' >
-            <h2 className='text-3xl md:text-5xl text-center font-bold text-blue-800 p-4'>All Categories</h2>
+          <motion.h2
+  initial={{ x: -800, opacity: 0 }}
+  whileInView={{ x: 0, opacity: 1 }}
+  viewport={{ once: true, amount: 0.5 }}
+  transition={{ duration: 0.9, ease: 'easeOut' }}  
+  className='text-3xl md:text-5xl text-center font-bold text-blue-800 p-4'
+>
+  All Categories
+</motion.h2>
 
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 mb-5'>
 

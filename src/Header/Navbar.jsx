@@ -2,6 +2,7 @@ import React from 'react';
 import { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
+import { FaCartShopping } from "react-icons/fa6";
 import "./navbar.css"
 
 const Navbar = () => {
@@ -22,7 +23,7 @@ const Navbar = () => {
              <li> <NavLink  to='/addProduct' >Add Product</NavLink></li>
              <li><NavLink to='/allProduct'> All Product</NavLink></li>
              <li> <NavLink  to='/myProduct' >My Product</NavLink></li>
-              <li><NavLink to='/carts' > Cart</NavLink> </li>
+              <li><NavLink to='/carts' > <FaCartShopping size={24} /></NavLink> </li>
 
         
      

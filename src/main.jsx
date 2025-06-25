@@ -16,7 +16,7 @@ import AddProduct from './Pages/AddProduct';
 import MyProduct from './Pages/MyProduct';
 import AllProduct from './Pages/AllProduct';
 import UpdateProduct from './Pages/UpdateProduct';
-import { HelmetProvider } from 'react-helmet-async';
+
 
 import CategoryPage from './Pages/Category/CategoryPage';
 import CategoryProductDetails from './Pages/Category/CategoryProductDetails';
@@ -54,12 +54,12 @@ const router = createBrowserRouter([
   },
   {
     path:'allProduct',
-    // loader:()=>fetch(`http://localhost:3000/products`),
+   
     element:<PrivateRoute><AllProduct></AllProduct></PrivateRoute>
   },
   {
     path:'updatedProduct/:id',
-  loader:({params})=>fetch(`http://localhost:3000/products/${params.id}`),
+  loader:({params})=>fetch(`https://wholesale-product-server.vercel.app/products/${params.id}`),
     element:<UpdateProduct></UpdateProduct>
   },
 
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
   },
   {
     path:'products/:id',
-    loader:({params})=>fetch(`http://localhost:3000/products/${params.id}`),
+    loader:({params})=>fetch(`https://wholesale-product-server.vercel.app/products/${params.id}`),
     element:<CategoryProductDetails> </CategoryProductDetails>
   },
 
@@ -101,10 +101,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-   <HelmetProvider>
+  
      <AuthProvider>
       <RouterProvider router={router} />
     </AuthProvider>
-   </HelmetProvider>
+   
   </StrictMode>,
 )

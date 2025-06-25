@@ -58,7 +58,7 @@ const googleSignIn=()=>{
 
   //   if(currentUser?.email){
   //       const userData={email:currentUser.email};
-  //       axios.post('http://localhost:3000/jwt',userData,{
+  //       axios.post('https://wholesale-product-server.vercel.app/jwt',userData,{
   //           withCredentials:true
   //       })
         

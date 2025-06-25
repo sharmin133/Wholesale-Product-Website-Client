@@ -1,13 +1,16 @@
-import React, {  useContext } from 'react';
+import React, {  useContext, useEffect } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import { updateProfile } from 'firebase/auth';
+import { Zoom } from 'react-awesome-reveal';
 
 const Register = () => {
-
+ useEffect(() => {
+    document.title = "Register | PrimeGo ";
+  }, []);
  const{createUser}=useContext(AuthContext)
  const[errorMessage,setErrorMessage]=useState(false)
  const [successMessage, setSuccessMessage]=useState('')
@@ -77,7 +80,9 @@ createUser(email, password)
     return (
        
             <div className="hero bg-base-200 min-h-screen">
-                 <ToastContainer position="top-center" autoClose={3000} />
+               <ToastContainer position="top-center" autoClose={3000} />
+              <Zoom triggerOnce>
+                
 
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <div className="card-body">
@@ -109,6 +114,7 @@ createUser(email, password)
       </div>
   
   </div>
+  </Zoom>
 </div>
 
        

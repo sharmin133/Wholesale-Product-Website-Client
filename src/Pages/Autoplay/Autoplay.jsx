@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Typewriter } from "react-simple-typewriter";
 
+
 const AutoPlay = () => {
 
   
@@ -19,21 +20,25 @@ const AutoPlay = () => {
 
 
   <div className="absolute top-3 md:top-10 left-1/2 transform -translate-x-1/2 text-center p-4 text-white">
-
+ {/* <span className="hidden md:block">to</span> */}
   
     <div className="md:text-6xl text-xl flex justify-center items-center gap-2 md:p-4">
-      <p className=" text-green-500 font-bold flex gap-3"><span>Welcome</span> <span className="hidden md:block">to</span> </p>
-      <p className="md:text-6xl text-xl p-2">
-        <span className='font-bold text-pink-600'>Prime</span>
-        <span className='font-medium text-blue-700'>Go</span>
-      </p>
+<p className="text-green-500 font-bold flex gap-3">
+  Welcome To
+</p>
+   <p
+  className="md:text-6xl text-xl p-2"
+>
+  <span className='font-bold text-pink-600'>Prime</span>
+  <span className='font-medium text-blue-700'>Go</span>
+</p>
     </div>
 
     <p className=" md:text-3xl text-gray-200 italic">
-      Bulk Buying. Better Pricing. <span className="text-teal-200 font-semibold">No Hassle</span>
-  <span className="inline-block text-yellow-200 font-semibold">
+      Bulk Buying. Better Pricing.  <span className="text-teal-200 font-semibold">No Hassle. </span>
+   <span className="inline-block text-yellow-200 font-semibold">
     <Typewriter
-      words={['Fully Trusted.']}
+      words={[' Fully Trusted.']}
       loop={true}
       cursor
       cursorStyle="|"

@@ -1,9 +1,11 @@
 import { Link } from 'react-router';
 import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import useAxiosSecure from './hooks/UseAxiosSecure';
 
 const AllProduct = () => {
+   useEffect(() => {
+      document.title = "All Product | PrimeGo ";
+    }, []);
  const [products, setProducts] = useState([]);
   const [tableView, setTableView] = useState(false);
   const [filterAvailable, setFilterAvailable] = useState(false); 
@@ -28,9 +30,7 @@ useEffect(() => {
 
   return (
     <div>
-      <Helmet>
-        <title>All Products | PrimeGo</title>
-      </Helmet>
+    
 
       <div className="flex justify-between  gap-4 mb-4  ">
    <div className="inline-flex rounded-md shadow-sm" role="group">
