@@ -1,139 +1,142 @@
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { Typewriter } from "react-simple-typewriter";
-
+import { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const AutoPlay = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
-  
-    return (
-      <div className="carousel w-full md:h-[700px] h-[300px]">
-  <div id="slide1" className="carousel-item relative w-full">
-    <img
-    
-     
-       src="/Allimage/ban-1.jpg"
-      className="w-full" />
+  return (
+    <div className="carousel w-full h-[300px] md:h-[550px]">
+      {/* Slide 1 */}
+      <div id="slide1" className="carousel-item relative w-full">
+  <img src="/Allimage/ban-1.jpg" className="w-full object-cover" />
 
-<div className="absolute inset-0 bg-black opacity-20"></div>
+<div className="absolute inset-0 bg-black/40 dark:bg-black/50"></div>
 
-
-  <div className="absolute top-3 md:top-10 left-1/2 transform -translate-x-1/2 text-center p-4 text-white">
- {/* <span className="hidden md:block">to</span> */}
-  
-    <div className="md:text-6xl text-xl flex justify-center items-center gap-2 md:p-4">
-<p className="text-green-500 font-bold flex gap-3">
-  Welcome To
-</p>
-   <p
-  className="md:text-6xl text-xl p-2"
->
-  <span className='font-bold text-pink-600'>Prime</span>
-  <span className='font-medium text-blue-700'>Go</span>
-</p>
-    </div>
-
-    <p className=" md:text-3xl text-gray-200 italic">
-      Bulk Buying. Better Pricing.  <span className="text-teal-200 font-semibold">No Hassle. </span>
-   <span className="inline-block text-yellow-200 font-semibold">
-    <Typewriter
-      words={[' Fully Trusted.']}
-      loop={true}
-      cursor
-      cursorStyle="|"
-      typeSpeed={50}
-      deleteSpeed={30}
-      delaySpeed={1000}
-  
-    />
-  </span>
+  <div
+    className="absolute top-3 md:top-20 left-1/2 transform -translate-x-1/2 text-center px-4   text-white" >
+    <h1
+      className="text-2xl md:text-6xl font-bold mb-4 drop-shadow-lg"
+      data-aos="zoom-in"
+    >
+      <span className="text-pink-600">Prime</span>
+      <span className="text-emerald-600 dark:text-emerald-600">Go</span>
+    </h1>
+    <p
+      className="md:text-xl text-sm uppercase tracking-wider mb-2 text-emerald-300 dark:text-emerald-400 font-semibold drop-shadow"
+      data-aos="fade-up"
+    >
+      One Marketplace. All Solutions.
     </p>
-
-   
-    <h2 className="text-xl md:text-4xl font-bold md:mb-4 md:pt-12 text-violet-700">
-      Find Your Product
-    </h2>
-    <div className="mt-4 flex justify-center">
-      <input
-        type="text"
-        placeholder="Search by Name, preferences, or budget..."
-        className="w-2/3 md:px-4 md:py-2 rounded-lg border-2 border-teal-600 shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-400"
+    <p
+      className="text-gray-200 dark:text-gray-300 text-sm md:text-lg max-w-xl mx-auto drop-shadow"
+      data-aos="fade-up"
+      data-aos-delay="200"
+    >
+      Buy bulk with confidence. We bring you beauty, home, stationery, automation & more — at wholesale prices.
+    </p>
+    <p
+      className="text-pink-400 font-semibold mt-3 drop-shadow"
+      data-aos="fade-up"
+      data-aos-delay="400"
+    >
+      <Typewriter
+        words={['Fast. Trusted. Affordable.']}
+        loop
+        cursor
+        cursorStyle="|"
+        typeSpeed={60}
+        deleteSpeed={30}
+        delaySpeed={1500}
       />
-    </div>
+    </p>
   </div>
 
-
-    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-      <a href="#slide4" className="btn btn-circle">❮</a>
-      <a href="#slide2" className="btn btn-circle">❯</a>
-    </div>
-  </div>
-  <div id="slide2" className="carousel-item relative w-full">
-    <img
-    src="/Allimage/2108.i305.009.S.m005.c13.realistic sandalwood horizontal poster.jpg"
-    
-    
-      className="w-full" />
-
-      <div className="absolute inset-0 bg-black opacity-40"></div>
-
-<div className="absolute top-10 left-1/2 transform -translate-x-1/2 text-center p-4 text-white">
-<div className="flex flex-col justify-between items-center">
-  <h2 className=" text-2xl md:text-6xl text-yellow-400 font-bold md:p-4 ">We Source. You Save.</h2>
-<p className="md:text-2xl md:pt-4  font-medium">Discover a smarter way to buy in bulk. PrimeGo connects trusted suppliers with smart buyers—no middlemen, no hassle.</p>
-</div>
-
-</div>
-
-    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-      <a href="#slide1" className="btn btn-circle">❮</a>
-      <a href="#slide3" className="btn btn-circle">❯</a>
-    </div>
-  </div>
-  <div id="slide3" className="carousel-item relative w-full">
-    <img
-      src="/Allimage/32872.jpg"
-      className="w-full" />
-
-      <div className="absolute inset-0 bg-black opacity-40"></div>
-
-<div className="absolute top-10 left-1/2 transform -translate-x-1/2 text-center p-4 text-white">
-
-
-<div className="flex flex-col justify-between items-center">
-  <h2 className=" text-2xl md:text-6xl text-red-400 font-bold md:p-4 ">Where Restocking Meets Reliability.</h2>
-<p className="md:text-2xl md:pt-4  font-medium"> Manage your inventory effortlessly with our reliable bulk buying platform designed to keep your shelves full and profits growing.</p>
-</div>
-
-</div>
-
-    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-      <a href="#slide2" className="btn btn-circle">❮</a>
-      <a href="#slide4" className="btn btn-circle">❯</a>
-    </div>
-  </div>
-  <div id="slide4" className="carousel-item relative w-full">
-    <img
-      src="/Allimage/7728475.jpg"
-      className="w-full" />
-
-      <div className="absolute inset-0 bg-black opacity-20"></div>
-
-<div className="absolute top-10 left-1/2 transform -translate-x-1/2 text-center p-4 text-white">
-
-
-
-</div>
-
-
-    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-      <a href="#slide3" className="btn btn-circle">❮</a>
-      <a href="#slide1" className="btn btn-circle">❯</a>
-    </div>
+  <div className="absolute left-5 right-5 md:bottom-60 bottom-30 flex justify-between">
+    <a
+      href="#slide4"
+      className="btn btn-circle bg-emerald-500 dark:bg-emerald-700 hover:bg-emerald-600 dark:hover:bg-emerald-800"
+    >
+      ❮
+    </a>
+    <a
+      href="#slide2"
+      className="btn btn-circle bg-emerald-500 dark:bg-emerald-700 hover:bg-emerald-600 dark:hover:bg-emerald-800"
+    >
+      ❯
+    </a>
   </div>
 </div>
-    );
+
+
+      {/* Slide 2 */}
+      <div id="slide2" className="carousel-item relative w-full">
+        <img src="/Allimage/cos2.jpg" className="w-full object-cover" />
+        <div className="absolute inset-0 bg-white/60 dark:bg-gray-900/60"></div>
+
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4
+                        text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl md:text-5xl font-bold mb-2 text-emerald-500 dark:text-emerald-700" data-aos="fade-up">
+            Streamline Your Supply Chain
+          </h2>
+          <p className="text-gray-700 dark:text-gray-300 text-base md:text-xl max-w-xl" data-aos="zoom-in" data-aos-delay="200">
+            Whether you're sourcing office goods or cosmetics, get everything delivered at scale with ease.
+          </p>
+        </div>
+
+        <div className="absolute left-5 right-5 md:bottom-60 bottom-30 flex justify-between">
+          <a href="#slide1" className="btn btn-circle bg-emerald-500 dark:bg-emerald-700 hover:bg-emerald-600 dark:hover:bg-emerald-800">❮</a>
+          <a href="#slide3" className="btn btn-circle bg-emerald-500 dark:bg-emerald-700 hover:bg-emerald-600 dark:hover:bg-emerald-800">❯</a>
+        </div>
+      </div>
+
+      {/* Slide 3 */}
+      <div id="slide3" className="carousel-item relative w-full">
+        <img src="/Allimage/32872.jpg" className="w-full object-cover" />
+        <div className="absolute inset-0 bg-white/60 dark:bg-gray-900/60"></div>
+
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4
+                        text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl md:text-5xl font-bold text-emerald-500 dark:text-emerald-700" data-aos="fade-right">
+            Quality You Can Rely On
+          </h2>
+          <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg max-w-xl mt-2" data-aos="fade-left" data-aos-delay="300">
+            Our vetted partners ensure every item meets standards — no compromise.
+          </p>
+        </div>
+
+        <div className="absolute left-5 right-5 md:bottom-60 bottom-30 flex justify-between">
+          <a href="#slide2" className="btn btn-circle bg-emerald-500 dark:bg-emerald-700 hover:bg-emerald-600 dark:hover:bg-emerald-800">❮</a>
+          <a href="#slide4" className="btn btn-circle bg-emerald-500 dark:bg-emerald-700 hover:bg-emerald-600 dark:hover:bg-emerald-800">❯</a>
+        </div>
+      </div>
+
+      {/* Slide 4 */}
+      <div id="slide4" className="carousel-item relative w-full">
+        <img src="/Allimage/cos5.jpg" className="w-full object-cover" />
+        <div className="absolute inset-0 bg-white/60 dark:bg-gray-900/60"></div>
+
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4
+                        text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl md:text-5xl font-bold text-emerald-500 dark:text-emerald-700" data-aos="zoom-in-down">
+            The Bulk Buying Revolution
+          </h2>
+          <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg max-w-xl mt-2" data-aos="fade-up" data-aos-delay="200">
+            Save more, buy smarter — and get everything in one cart.
+          </p>
+        </div>
+
+        <div className="absolute left-5 right-5 md:bottom-60 bottom-30 flex justify-between">
+          <a href="#slide3" className="btn btn-circle bg-emerald-500 dark:bg-emerald-700 hover:bg-emerald-600 dark:hover:bg-emerald-800">❮</a>
+          <a href="#slide1" className="btn btn-circle bg-emerald-500 dark:bg-emerald-700 hover:bg-emerald-600 dark:hover:bg-emerald-800">❯</a>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default AutoPlay;
+

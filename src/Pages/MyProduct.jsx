@@ -1,30 +1,23 @@
-import React, {  useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
-
 import useAxiosSecure from './hooks/UseAxiosSecure';
 
-
 const MyProduct = () => {
- useEffect(() => {
-    document.title = "My Product| PrimeGo ";
+  useEffect(() => {
+    document.title = "My Product | PrimeGo ";
   }, []);
-    const { user } = useContext(AuthContext);
-    // console.log(user.accessToken)
+
+  const { user } = useContext(AuthContext);
   const [items, setItems] = useState([]);
-  const axiosSecure=useAxiosSecure()
-
-
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     if (user?.email) {
-        
-       axiosSecure.get(`/products/email/${user.email}`,{
-      
-       })
-  .then(res => setItems(res.data));
+      axiosSecure.get(`/products/email/${user.email}`)
+        .then(res => setItems(res.data));
     }
-  }, [user,axiosSecure]);
+  }, [user, axiosSecure]);
 
   const handleDeleteData = (_id) => {
     Swal.fire({
@@ -37,7 +30,7 @@ const MyProduct = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://wholesale-product-server.vercel.app/products/${_id}`, {
+        fetch(`https://primego-wholesale-server.vercel.app/products/${_id}`, {
           method: "DELETE"
         })
           .then(res => res.json())
@@ -45,7 +38,7 @@ const MyProduct = () => {
             if (data.deletedCount) {
               Swal.fire({
                 title: "Deleted!",
-                text: "Your list item has been deleted.",
+                text: "Your product has been deleted.",
                 icon: "success"
               });
               const remainingData = items.filter(item => item._id !== _id);
@@ -56,47 +49,46 @@ const MyProduct = () => {
     });
   };
 
-
-    return (
-      <div className="overflow-x-auto p-2">
-      <table className="table-fixed w-full text-sm md:text-base">
+  return (
+    <div className="overflow-x-auto p-4 bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen">
+      <h2 className="text-3xl font-bold text-center text-emerald-600 mb-6">My Listed Products</h2>
+      <table className="table w-full border border-gray-200 dark:border-gray-700">
         <thead>
-          <tr className="bg-amber-300 text-center">
-            <th className="hidden md:table-cell"></th>
-            <th className="text-blue-800 font-bold md:text-2xl text-xl">Name</th>
-            <th className="hidden md:table-cell text-cyan-800 md:text-2xl text-xl">Brand</th>
-            <th className="text-amber-800 md:text-2xl text-xl">Price</th>
-            <th className="text-center"></th>
+          <tr className="bg-pink-100 dark:bg-pink-800 text-center">
+            <th className="hidden md:table-cell text-lg">Image</th>
+            <th className="text-blue-800 font-bold text-xl">Name</th>
+            <th className="hidden md:table-cell text-cyan-800 text-xl">Brand</th>
+            <th className="text-amber-800 text-xl">Price</th>
+            <th className="text-center text-lg">Action</th>
           </tr>
         </thead>
         <tbody>
           {items.map((item, index) => (
-            <tr key={index} className="bg-base-200 text-center">
+            <tr key={index} className="text-center border-b dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
               <td className="hidden md:table-cell px-2 py-2">
                 <img
                   src={item.photo}
-                  alt=""
-                  className="w-60 h-40 object-cover rounded-xl mx-auto shadow-2xl"
+                  alt={item.product_name}
+                  className="w-36 h-24 object-cover rounded-xl mx-auto shadow-lg"
                 />
               </td>
-              <td className="text-blue-800 font-bold px-2 py-2 md:text-2xl">{item.product_name}</td>
-              <td className="hidden md:table-cell md:text-xl text-cyan-800 px-2 py-2">{item.brand}</td>
-              <td className="text-amber-800 px-2 py-2 md:text-xl">${item.price}</td>
+              <td className="text-blue-800 font-semibold px-2 py-2 text-lg">{item.product_name}</td>
+              <td className="hidden md:table-cell text-cyan-800 px-2 py-2 text-md">{item.brand}</td>
+              <td className="text-amber-800 px-2 py-2 text-md">${item.price}</td>
               <td className="px-2 py-2">
-                  <button
-                    className="btn btn-sm  md:btn-lg bg-red-400 w-full md:w-auto"
-                    onClick={() => handleDeleteData(item._id)}
-                  >
-                    Delete
-                  </button>
-               
+                <button
+                  className="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition w-full md:w-auto"
+                  onClick={() => handleDeleteData(item._id)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-    );
+  );
 };
 
 export default MyProduct;

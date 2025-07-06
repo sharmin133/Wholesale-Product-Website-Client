@@ -40,7 +40,7 @@ const googleSignIn=()=>{
     setUser(null); 
        if (currentUser?.email) {
       try {
-        const res = await axios.get(`https://wholesale-product-server.vercel.app/users/${currentUser.email}`);
+        const res = await axios.get(`https://primego-wholesale-server.vercel.app/users/${currentUser.email}`);
         const dbUser = res.data;
         setUser({
           ...currentUser,
@@ -58,7 +58,7 @@ const googleSignIn=()=>{
 
   //   if(currentUser?.email){
   //       const userData={email:currentUser.email};
-  //       axios.post('https://wholesale-product-server.vercel.app/jwt',userData,{
+  //       axios.post('https://primego-wholesale-server.vercel.app/jwt',userData,{
   //           withCredentials:true
   //       })
         

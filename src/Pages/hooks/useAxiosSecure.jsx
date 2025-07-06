@@ -6,7 +6,7 @@ import { AuthContext } from '../../Context/AuthContext';
 
 
     const axiosInstance = axios.create({
-    baseURL:'https://wholesale-product-server.vercel.app',
+    baseURL:'https://primego-wholesale-server.vercel.app',
     withCredentials: true,
 })
 

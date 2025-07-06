@@ -23,6 +23,8 @@ import CategoryProductDetails from './Pages/Category/CategoryProductDetails';
 import Cart from './Pages/Cart';
 import PrivateRoute from './privateRoute/PrivateRoute';
 import Categories from './Pages/Categories';
+import AboutUs from './Pages/AboutUs';
+import FooterInfo from './Footer/FooterDetails';
 
 
 const router = createBrowserRouter([
@@ -42,9 +44,13 @@ const router = createBrowserRouter([
     path:'login', element:<LogIn></LogIn>
   },
   {
+    path:'aboutUs', element:<AboutUs></AboutUs>
+  },
+  {
 
     path:'categories', element:<Categories></Categories>
   },
+  { path: 'info/:section', element: <FooterInfo /> },
 
   {
     path:'addProduct', element:<PrivateRoute><AddProduct></AddProduct></PrivateRoute>
@@ -59,7 +65,7 @@ const router = createBrowserRouter([
   },
   {
     path:'updatedProduct/:id',
-  loader:({params})=>fetch(`https://wholesale-product-server.vercel.app/products/${params.id}`),
+  loader:({params})=>fetch(`https://primego-wholesale-server.vercel.app/products/${params.id}`),
     element:<UpdateProduct></UpdateProduct>
   },
 
@@ -68,7 +74,7 @@ const router = createBrowserRouter([
   },
   {
     path:'products/:id',
-    loader:({params})=>fetch(`https://wholesale-product-server.vercel.app/products/${params.id}`),
+    loader:({params})=>fetch(`https://primego-wholesale-server.vercel.app/products/${params.id}`),
     element:<CategoryProductDetails> </CategoryProductDetails>
   },
 

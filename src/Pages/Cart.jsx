@@ -44,7 +44,7 @@ const handleDeleteData = (_id) => {
   }).then((result) => {
     if (result.isConfirmed) {
       console.log('Deleting item with ID:', _id);
-      fetch(`https://wholesale-product-server.vercel.app/purchases/${_id}`, {
+      fetch(`https://primego-wholesale-server.vercel.app/purchases/${_id}`, {
         method: "DELETE"
       })
         .then(res => res.json())

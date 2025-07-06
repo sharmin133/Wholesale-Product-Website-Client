@@ -27,9 +27,10 @@ const paymentImages = [
 const TopItems = () => {
   return (
     <div className="bg-base-100 py-10">
-      <h2 className="text-3xl md:text-5xl text-center font-bold text-blue-800 mb-8" >
-        Payment Methods
-      </h2>
+      
+       <h2 className="text-3xl md:text-5xl text-center font-bold text-emerald-500 dark:text-emerald-700 p-4">
+           Payment Methods
+          </h2>
 
       <div className="grid grid-cols-2 md:grid-cols-5 gap-6 px-4 md:px-10">
         {paymentImages.map((item, index) => (

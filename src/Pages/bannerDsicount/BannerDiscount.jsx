@@ -3,11 +3,11 @@ import React from 'react';
 const BannerDiscount = () => {
     return (
        
-        <div className="relative w-full h-[500px] md:h-[600px]">
+        <div className="relative  w-full h-[300px] md:h-[550px]">
       {/* Background Image */}
       <img 
         src="/Allimage/banner-2.jpg"
-        className="w-full h-full object-cover shadow-lg rounded-2xl "
+        className="w-full h-full object-cover shadow-lg  "
         alt="Banner"
       />
 

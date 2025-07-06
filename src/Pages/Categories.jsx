@@ -1,149 +1,98 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
-import { motion } from 'framer-motion';
 
 
 const Categories = () => {
+  const [showAll, setShowAll] = useState(false);
+
   useEffect(() => {
     document.title = "Categories | PrimeGo";
   }, []);
 
+  const categories = [
+    {
+      title: "Electronics & Gadgets",
+      image: "/Allimage/electronics.jpg",
+      path: "/products/category/Electronics & Gadgets",
+    },
+    {
+      title: "Home & Kitchen Appliances",
+      image: "/Allimage/Home & Kitchen Appliances Products.jpg",
+      path: "/products/category/Home & Kitchen Appliances",
+    },
+    {
+      title: "Fashion & Apparel",
+      image: "/Allimage/Fashion & Apparel Products.jpg",
+      path: "/products/category/Fashion & Apparel",
+    },
+    {
+      title: "Industrial Machinery & Tools",
+      image: "/Allimage/Industrial Machinery & Tools Products.jpg",
+      path: "/products/category/Industrial Machinery & Tools",
+    },
+    {
+      title: "Health & Beauty",
+      image: "/Allimage/Health & Beauty.jpg",
+      path: "/products/category/Health & Beauty",
+    },
+    {
+      title: "Automotive Parts & Accessories",
+      image: "/Allimage/Automotive Parts.jpg",
+      path: "/products/category/Automotive Parts & Accessories",
+    },
+    {
+      title: "Office Supplies & Stationery",
+      image: "/Allimage/Office Supplies & Stationery.jpg",
+      path: "/products/category/Office Supplies & Stationery",
+    },
+  ];
 
-    return (
-        <div className='bg-blue-50'>
-          <div className='lg:ml-20 ' >
-          <motion.h2
-  initial={{ x: -800, opacity: 0 }}
-  whileInView={{ x: 0, opacity: 1 }}
-  viewport={{ once: true, amount: 0.5 }}
-  transition={{ duration: 0.9, ease: 'easeOut' }}  
-  className='text-3xl md:text-5xl text-center font-bold text-blue-800 p-4'
->
-  All Categories
-</motion.h2>
+  const visibleCategories = showAll ? categories : categories.slice(0, 6);
 
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 mb-5'>
+  return (
+    <div className=" bg-white dark:bg-gray-900 min-h-screen transition-colors duration-500 pb-6">
+      <h2
+        className="text-3xl md:text-5xl text-center font-bold
+        text-emerald-500 dark:text-emerald-700
+        mt-10 mb-6">Explore Our Categories </h2>
 
+      <div className="lg:ml-20">
+      
 
-
-
-              <Link to='/products/category/Electronics & Gadgets'>
-            <div  className="card  w-96 shadow-sm bg-amber-50">
-            <figure className="px-10 pt-10">
-           <img
-           src="/Allimage/electronics.jpg"
-          alt=""
-       className="rounded-xl" />
-       </figure>
-        <div className="card-body items-center text-center">
-    <h2 className="card-title">Electronics & Gadgets</h2>
-  </div>
-</div>
-</Link>
-
-
-
- <Link to='/products/category/Home & Kitchen Appliances'>
- <div className="card w-96 shadow-sm bg-amber-50">
-  <figure className="px-10 pt-10">
-    <img
-      src="/Allimage/Home & Kitchen Appliances Products.jpg"
-      alt=""
-      className="rounded-xl" />
-  </figure>
-  <div className="card-body items-center text-center">
-    <h2 className="card-title">Home & Kitchen Appliances</h2>
-  </div>
-</div>
-</Link>
-
-
- <Link to='/products/category/Fashion & Apparel'>
- <div className="card w-96 shadow-sm bg-amber-50">
-  <figure className="px-10 pt-10">
-    <img
-      src="/Allimage/Fashion & Apparel Products.jpg"
-      alt=""
-      className="rounded-xl" />
-  </figure>
-  <div className="card-body items-center text-center">
-    <h2 className="card-title">Fashion & Apparel</h2>
-  </div>
-</div>
-</Link>
-
-
- <Link to='/products/category/Industrial Machinery & Tools'>
- <div className="card  w-96 shadow-sm bg-amber-50">
-  <figure className="px-10 pt-10">
-    <img
-      src="/Allimage/Industrial Machinery & Tools Products.jpg"
-      alt=""
-      className="rounded-xl" />
-  </figure>
-  <div className="card-body items-center text-center">
-    <h2 className="card-title"> Industrial Machinery & Tools</h2>
-  </div>
-</div>
-</Link>
-
-
-
-
- <Link to='/products/category/Health & Beauty'>
- <div className="card  w-96 shadow-sm bg-amber-50">
-
-  <figure className="px-10 pt-10">
-    <img
-      src="/Allimage/Health & Beauty.jpg"
-      alt=""
-      className="rounded-xl" />
-  </figure>
-  <div className="card-body items-center text-center">
-    <h2 className="card-title">Health & Beauty</h2>
-  </div>
-</div>
-</Link>
-
-
-
- <Link to='/products/category/Automotive Parts & Accessories'>
- <div className="card  w-96 shadow-sm bg-amber-50">
-  <figure className="px-10 pt-10">
-    <img
-      src="/Allimage/Automotive Parts.jpg"
-      alt=""
-      className="rounded-xl" />
-  </figure>
-  <div className="card-body items-center text-center">
-    <h2 className="card-title">Automotive Parts & Accessories</h2>
-  </div>
-</div>
-</Link>
-
-
-
- <Link to='/products/category/Office Supplies & Stationery'>
- <div className="card  w-96 shadow-sm bg-amber-50">
-  <figure className="px-10 pt-10">
-    <img
-      src="/Allimage/Office Supplies & Stationery.jpg"
-      alt=""
-      className="rounded-xl" />
-  </figure>
-  <div className="card-body items-center text-center">
-    <h2 className="card-title">Office Supplies & Stationery</h2>
-  </div>
-</div>
-</Link>
-
-
-
-</div>
-
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mb-5 place-items-center px-4">
+          {visibleCategories.map((cat, idx) => (
+            <Link to={cat.path} key={idx} className="w-full max-w-sm">
+              <div className="card w-full shadow-sm bg-white dark:bg-gray-800 rounded-lg transition-colors duration-500 hover:shadow-lg">
+                <figure className="px-10 pt-10">
+                  <img
+                    src={cat.image}
+                    alt={cat.title}
+                    className="rounded-xl h-44 object-cover"
+                  />
+                </figure>
+                <div className="card-body items-center text-center">
+                  <h2 className="card-title text-gray-900 dark:text-gray-100 font-semibold">
+                    {cat.title}
+                  </h2>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
-        </div>
-    );
+
+        {!showAll && categories.length > 6 && (
+          <div className="text-center mt-5">
+            <button
+              onClick={() => setShowAll(true)}
+              className="px-6 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-xl transition"
+            >
+              See More
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Categories;
