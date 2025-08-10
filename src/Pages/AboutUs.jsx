@@ -1,13 +1,12 @@
 import React from 'react';
 import { FaBoxes, FaHandHoldingUsd, FaTruckLoading } from 'react-icons/fa';
-import LiveChat from './ChatComponent/ChatComponent';
 
 
 
 const AboutUs = () => {
   return (
     <div className='bg-gray-100 dark:bg-gray-900 transition-colors duration-500 min-h-screen'>
-    <LiveChat></LiveChat>
+  
       <div className="max-w-6xl mx-auto p-6 space-y-8 transition-colors duration-300">
 
         {/* Main Heading */}
