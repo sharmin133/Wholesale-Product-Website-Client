@@ -7,6 +7,9 @@ import useAxiosSecure from './hooks/UseAxiosSecure';
 
 
 
+//cart component
+
+
 const Cart = () => {
    useEffect(() => {
       document.title = "Cart | PrimeGo ";

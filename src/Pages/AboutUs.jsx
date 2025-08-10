@@ -1,8 +1,6 @@
 import React from 'react';
 import { FaBoxes, FaHandHoldingUsd, FaTruckLoading } from 'react-icons/fa';
 
-
-
 const AboutUs = () => {
   return (
     <div className='bg-gray-100 dark:bg-gray-900 transition-colors duration-500 min-h-screen'>
