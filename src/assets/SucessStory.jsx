@@ -21,22 +21,23 @@ const SuccessStory = () => {
   ];
 
   return (
-    <div className=" ">
+    <div className="py-12 bg-emerald-200">
       <Fade direction="up" cascade>
-         <h2 className="text-3xl md:text-5xl text-center font-bold text-emerald-500 dark:text-emerald-700 p-4">
+        <h2 className="text-3xl md:text-5xl pb-8 text-center font-bold text-emerald-700">
           Success Stories
-          </h2>
-        
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-stretch px-16">
           {stories.map((story, index) => (
             <div
               key={index}
-              className="bg-white shadow-md border-t-4 border-pink-400 rounded-2xl px-6 py-8 max-w-md hover:shadow-xl transition duration-300"
+              className="bg-white shadow-md border-t-4 border-emerald-600 rounded-2xl px-6 md:px-8 py-8 hover:shadow-xl transition duration-300 flex flex-col h-full"
             >
-              <div className="flex flex-col items-center text-center gap-4">
-                <BiSolidQuoteAltLeft size={40} className="text-green-500" />
-                <p className="text-gray-700 text-lg italic">“{story.quote}”</p>
+              <div className="flex flex-col items-center text-center gap-4 flex-grow">
+                <BiSolidQuoteAltLeft size={40} className="text-emerald-600" />
+                <p className="text-gray-700 text-lg italic flex-grow">
+                  “{story.quote}”
+                </p>
                 <h3 className="text-xl font-semibold text-amber-600 mt-4">
                   — {story.name}
                 </h3>

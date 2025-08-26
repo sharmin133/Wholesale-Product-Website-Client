@@ -26,9 +26,9 @@ const paymentImages = [
 
 const TopItems = () => {
   return (
-    <div className="bg-base-100 py-10">
+    <div className="bg-amber-300 py-12">
       
-       <h2 className="text-3xl md:text-5xl text-center font-bold text-emerald-500 dark:text-emerald-700 p-4">
+       <h2 className="text-3xl pb-8  md:text-5xl text-center font-bold text-emerald-700 ">
            Payment Methods
           </h2>
 

@@ -50,41 +50,39 @@ const Categories = () => {
   const visibleCategories = showAll ? categories : categories.slice(0, 6);
 
   return (
-    <div className=" bg-white dark:bg-gray-900 min-h-screen transition-colors duration-500 pb-6">
+    <div className=" bg-emerald-50 p-12 transition-colors duration-500 ">
       <h2
         className="text-3xl md:text-5xl text-center font-bold
-        text-emerald-500 dark:text-emerald-700
-        mt-10 mb-6">Explore Our Categories </h2>
+        text-emerald-500 dark:text-emerald-700 pb-8
+         ">Explore Our Categories </h2>
 
-      <div className="lg:ml-20">
+      <div className="">
       
 
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mb-5 place-items-center px-4">
-          {visibleCategories.map((cat, idx) => (
-            <Link to={cat.path} key={idx} className="w-full max-w-sm">
-              <div className="card w-full shadow-sm bg-white dark:bg-gray-800 rounded-lg transition-colors duration-500 hover:shadow-lg">
-                <figure className="px-10 pt-10">
-                  <img
-                    src={cat.image}
-                    alt={cat.title}
-                    className="rounded-xl h-44 object-cover"
-                  />
-                </figure>
-                <div className="card-body items-center text-center">
-                  <h2 className="card-title text-gray-900 dark:text-gray-100 font-semibold">
-                    {cat.title}
-                  </h2>
-                </div>
-              </div>
-            </Link>
-          ))}
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 p-4">
+  {visibleCategories.map((cat, idx) => (
+    <Link key={idx} to={cat.path} className="group w-full max-w-lg">
+      <div className="relative overflow-hidden rounded-2xl shadow-lg transition-transform duration-500 transform hover:scale-105 hover:shadow-2xl">
+        <img
+          src={cat.image}
+          alt={cat.title}
+          className="w-full h-64 object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent rounded-2xl flex items-end p-4">
+          <h2 className="text-xl md:text-2xl font-bold text-white drop-shadow-lg">
+            {cat.title}
+          </h2>
         </div>
+      </div>
+    </Link>
+  ))}
+</div>
 
         {!showAll && categories.length > 6 && (
           <div className="text-center mt-5">
             <button
               onClick={() => setShowAll(true)}
-              className="px-6 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-xl transition"
+              className="px-6 py-2 bg-emerald-700 font-bold hover:bg-emerald-900 text-white rounded-xl transition"
             >
               See More
             </button>

@@ -5,12 +5,12 @@ import { Link } from 'react-router';
 
 const Footer = () => {
   return (
-    <footer className="bg-yellow-100 dark:bg-gray-900 text-blue-900 dark:text-white py-10 shadow-inner">
+    <footer className="bg-amber-500  text-blue-900 dark:text-white py-10 shadow-inner">
       {/* Logo Section */}
       <div className="flex flex-col items-center mb-8">
       
          <img className="w-16 h-16 rounded-3xl mb-2" src="/Allimage/logo.png" alt="" />
-        <a className=" text-xl">PrimeGo</a>
+        <a className=" text-2xl font-bold text-emerald-700">PrimeGo</a>
       </div>
 
       {/* Main Grid Layout */}

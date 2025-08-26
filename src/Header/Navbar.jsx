@@ -1,12 +1,11 @@
-import React from 'react';
-import { use } from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import { FaCartShopping } from "react-icons/fa6";
 import "./navbar.css";
 
 const Navbar = () => {
-  const { user, logOutUser } = use(AuthContext);
+  const { user, logOutUser } = useContext(AuthContext);
 
   const links = (
     <>
@@ -14,10 +13,10 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `px-3 py-2 rounded-md font-medium ${
+            `px-3 text-lg py-2 rounded-md font-medium ${
               isActive
-                ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900'
-                : 'text-gray-900 dark:text-gray-100 hover:text-pink-600 dark:hover:text-pink-400'
+                ? 'text-emerald-600 bg-amber-500'
+                : 'text-white hover:text-emerald-600'
             }`
           }
         >
@@ -28,25 +27,24 @@ const Navbar = () => {
         <NavLink
           to="/categories"
           className={({ isActive }) =>
-            `px-3 py-2 rounded-md font-medium ${
+            `px-3 py-2 text-lg rounded-md font-medium ${
               isActive
-                ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900'
-                : 'text-gray-900 dark:text-gray-100 hover:text-pink-600 dark:hover:text-pink-400'
+                ? 'text-emerald-600 bg-amber-500'
+                : 'text-white hover:text-emerald-600'
             }`
           }
         >
           Categories
         </NavLink>
       </li>
-
-  <li>
+      <li>
         <NavLink
           to="/aboutUs"
           className={({ isActive }) =>
-            `px-3 py-2 rounded-md font-medium ${
+            `px-3 py-2 text-lg rounded-md font-medium ${
               isActive
-                ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900'
-                : 'text-gray-900 dark:text-gray-100 hover:text-pink-600 dark:hover:text-pink-400'
+               ? 'text-emerald-600 bg-amber-500'
+                : 'text-white hover:text-emerald-600'
             }`
           }
         >
@@ -60,10 +58,10 @@ const Navbar = () => {
             <NavLink
               to="/addProduct"
               className={({ isActive }) =>
-                `px-3 py-2 rounded-md font-medium ${
+                `px-3 py-2 text-lg rounded-md font-medium ${
                   isActive
-                    ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900'
-                    : 'text-gray-900 dark:text-gray-100 hover:text-pink-600 dark:hover:text-pink-400'
+                  ? 'text-emerald-600 bg-amber-500'
+                : 'text-white hover:text-emerald-600'
                 }`
               }
             >
@@ -74,10 +72,10 @@ const Navbar = () => {
             <NavLink
               to="/allProduct"
               className={({ isActive }) =>
-                `px-3 py-2 rounded-md font-medium ${
+                `px-3 py-2 text-lg rounded-md font-medium ${
                   isActive
-                    ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900'
-                    : 'text-gray-900 dark:text-gray-100 hover:text-pink-600 dark:hover:text-pink-400'
+                   ? 'text-emerald-600 bg-amber-500'
+                : 'text-white hover:text-emerald-600'
                 }`
               }
             >
@@ -88,10 +86,10 @@ const Navbar = () => {
             <NavLink
               to="/myProduct"
               className={({ isActive }) =>
-                `px-3 py-2 rounded-md font-medium ${
+                `px-3 py-2 text-lg rounded-md font-medium ${
                   isActive
-                    ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900'
-                    : 'text-gray-900 dark:text-gray-100 hover:text-pink-600 dark:hover:text-pink-400'
+                  ? 'text-emerald-600 bg-amber-500'
+                : 'text-white hover:text-emerald-600'
                 }`
               }
             >
@@ -99,7 +97,10 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/carts" className="text-gray-900 dark:text-gray-100 hover:text-pink-600 dark:hover:text-pink-400">
+            <NavLink
+              to="/carts"
+              className="text-gray-900 hover:text-emerald-600"
+            >
               <FaCartShopping size={24} />
             </NavLink>
           </li>
@@ -110,20 +111,16 @@ const Navbar = () => {
 
   const handleSignOut = () => {
     logOutUser()
-      .then(() => {
-        console.log('signout successfully');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then(() => console.log('Sign out successfully'))
+      .catch((error) => console.log(error));
   };
 
   return (
-    <div className="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-sm">
+    <div className="sticky top-0 z-50 bg-amber-500 shadow-sm">
       <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-gray-900 dark:text-gray-100">
+            <div tabIndex={0} className="btn btn-ghost lg:hidden text-gray-900">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -136,18 +133,14 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-white dark:bg-gray-900 rounded-box z-10 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-white rounded-box z-10 mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
           </div>
           <div className="flex items-center gap-2">
-            <img
-              className="md:w-12 md:h-12 w-6 h-6"
-              src="/Allimage/logo.png"
-              alt="PrimeGo Logo"
-            />
-            <a className="btn btn-ghost text-xl font-bold text-gray-900 dark:text-gray-100">PrimeGo</a>
+            <img className="md:w-12 md:h-12 w-6 h-6" src="/Allimage/logo.png" alt="PrimeGo Logo" />
+            <a className="btn btn-ghost text-2xl font-bold text-emerald-600">PrimeGo</a>
           </div>
         </div>
 
@@ -167,7 +160,7 @@ const Navbar = () => {
               </div>
               <button
                 onClick={handleSignOut}
-                className="btn rounded-2xl px-4 py-2 bg-pink-600 text-white hover:bg-pink-700 dark:bg-pink-500 dark:hover:bg-pink-600 transition"
+                className="btn rounded-2xl px-4 py-2 bg-emerald-700 text-white hover:bg-emerald-800 transition"
               >
                 <span className="text-xl sm:text-lg">Log Out</span>
               </button>
@@ -175,12 +168,12 @@ const Navbar = () => {
           ) : (
             <div className="flex gap-2">
               <Link to="/register">
-                <span className="md:text-2xl bg-pink-500 text-white rounded-2xl px-4 py-2 md:font-medium hover:bg-pink-600 transition cursor-pointer">
+                <span className="md:text-xl bg-emerald-700 text-white rounded-2xl px-4 py-2 md:font-medium hover:bg-emerald-800 transition cursor-pointer">
                   Sign Up
                 </span>
               </Link>
               <Link to="/login">
-                <span className="md:text-2xl bg-pink-500 text-white rounded-2xl px-4 py-2 md:font-medium hover:bg-pink-600 transition cursor-pointer">
+                <span className="md:text-xl bg-emerald-700 text-white rounded-2xl px-4 py-2 md:font-medium hover:bg-emerald-800 transition cursor-pointer">
                   Log In
                 </span>
               </Link>
@@ -193,4 +186,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

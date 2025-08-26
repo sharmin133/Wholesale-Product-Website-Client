@@ -17,11 +17,11 @@ const BannerDiscount = () => {
       {/* Centered Text */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white px-4">
         <div className="flex flex-col items-center">
-            <p className='text-red-400'>Special Offer in Register</p>
+            <p className='text-white text-lg'>Special Offer in Register</p>
           <h2 className="text-2xl md:text-6xl text-orange-500 font-bold mb-4">
            Buy 1 Get 2 Free
           </h2>
-          <p className="md:text-2xl font-medium text-gray-600 ">
+          <p className="md:text-2xl font-medium text-emerald-800 ">
            It is long established fact that reader will distracted
 by the readable content of page.
           </p>

@@ -24,37 +24,37 @@ const Home = () => {
 
       <div><BannerDiscount /></div>
 
-      <div className="  bg-white dark:bg-gray-800  p-6">
+      <div className="  bg-emerald-200 px-16 py-12">
         <Zoom triggerOnce>
-          <h2 className="text-3xl md:text-5xl text-center font-bold text-emerald-500 dark:text-emerald-700 p-4">
+          <h2 className="text-3xl md:text-5xl text-center font-bold text-emerald-700 pb-8">
             Know Before You Nest
           </h2>
 
-          <div className="collapse collapse-arrow bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md mb-2">
+          <div className="collapse collapse-arrow bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md mb-2">
             <input type="radio" name="my-accordion-2" defaultChecked />
-            <div className="collapse-title font-semibold">How do I create an account?</div>
-            <div className="collapse-content text-sm">
+            <div className="collapse-title font-semibold text-2xl">How do I create an account?</div>
+            <div className="collapse-content  text-amber-500">
               Click the "Sign Up" button in the top right corner and follow the registration process.
             </div>
           </div>
-          <div className="collapse collapse-arrow bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md mb-2">
+          <div className="collapse collapse-arrow bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md mb-2">
             <input type="radio" name="my-accordion-2" />
-            <div className="collapse-title font-semibold">Do I need to be logged in to post ?</div>
-            <div className="collapse-content text-sm">
+            <div className="collapse-title font-semibold text-2xl">Do I need to be logged in to post ?</div>
+            <div className="collapse-content text-amber-500 ">
               Yes, you must be logged in to create a post. This helps ensure that all interactions are secure and tied to a real user.
             </div>
           </div>
-          <div className="collapse collapse-arrow bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md mb-2">
+          <div className="collapse collapse-arrow bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md mb-2">
             <input type="radio" name="my-accordion-2" />
-            <div className="collapse-title font-semibold">Can I update my post later?</div>
-            <div className="collapse-content text-sm">
+            <div className="collapse-title font-semibold text-2xl">Can I update my post later?</div>
+            <div className="collapse-content text-amber-500 ">
               Yes, you can easily update your post at any time. Just log into your account, go to the “All Product” section, select the post you want to update, and click the “Update” button. Make your changes and save — your post will be updated instantly.
             </div>
           </div>
-          <div className="collapse collapse-arrow bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md">
+          <div className="collapse collapse-arrow bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md">
             <input type="radio" name="my-accordion-2" />
-            <div className="collapse-title font-semibold">Can I delete my post if I no longer need it?</div>
-            <div className="collapse-content text-sm">
+            <div className="collapse-title font-semibold text-2xl">Can I delete my post if I no longer need it?</div>
+            <div className="collapse-content text-amber-500 ">
               Absolutely. If you no longer need the post, go to your "My Product" section and click the "Delete" button on the post you want to remove.
             </div>
           </div>
@@ -65,7 +65,7 @@ const Home = () => {
         <TopItems />
       </Fade>
 
-      <div className="my-10">
+      <div className="">
         <SuccessStory />
       </div>
       
