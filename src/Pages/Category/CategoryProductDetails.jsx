@@ -48,7 +48,7 @@ const CategoryProductDetails = () => {
   const handleForm = e => e.preventDefault();
 
   return (
-    <div className="max-w-3xl mx-auto my-10 p-6
+    <div className="max-w-3xl mx-auto my-20 p-6
                     bg-amber-50 dark:bg-gray-900
                     rounded-2xl shadow-xl
                     text-gray-900 dark:text-gray-100">

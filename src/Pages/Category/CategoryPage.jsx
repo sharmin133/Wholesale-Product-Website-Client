@@ -21,7 +21,7 @@ const CategoryPage = () => {
 
   return (
     <div className="p-4 px-16 bg-amber-50 dark:bg-gray-900 min-h-screen">
-      <h2 className="text-3xl font-bold text-center mb-6 text-emerald-600 dark:text-emerald-400">
+      <h2 className="text-3xl font-bold text-center my-16 text-emerald-600 dark:text-emerald-400">
         {categoryName} Products
       </h2>
 
@@ -45,8 +45,7 @@ const CategoryPage = () => {
                 {product.product_name}
               </h2>
               <p><strong>Brand:</strong> {product.brand}</p>
-              <p><strong>Category:</strong> {product.category}</p>
-              <p><strong>Min Quantity:</strong> {product.min_selling_quantity}</p>
+      
               <p><strong>Price:</strong> ${product.price}</p>
 
               <div className="my-2">
