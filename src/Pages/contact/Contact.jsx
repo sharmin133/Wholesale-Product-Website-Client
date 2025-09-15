@@ -37,7 +37,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="bg-amber-300 py-12">
+     <section className="py-16 px-16 bg-gradient-to-b from-amber-100 via-amber-200 to-amber-300">
       {/* Heading */}
       <h2
         className="text-3xl pb-8 md:text-5xl text-center font-bold text-emerald-700"

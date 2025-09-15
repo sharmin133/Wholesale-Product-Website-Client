@@ -11,7 +11,8 @@ const paymentImages = [
 
 const TopItems = () => {
   return (
-    <div className="bg-white py-12">
+    <div className="py-16 px-16 bg-gradient-to-b from-amber-100 via-amber-200 to-amber-300">
+
       <h2 className="text-3xl pb-8 md:text-5xl text-center font-bold text-emerald-700">
         Payment Methods
       </h2>
@@ -21,8 +22,8 @@ const TopItems = () => {
           <motion.div
             key={index}
             className="border border-blue-300 rounded-xl p-3 shadow-md hover:shadow-xl bg-gray-200"
-            initial={{ x: 100, opacity: 0 }} // right থেকে start
-            animate={{ x: 0, opacity: 1 }}   // final position
+            initial={{ x: 100, opacity: 0 }} 
+            animate={{ x: 0, opacity: 1 }}   
             transition={{
               type: 'spring',
               stiffness: 100,

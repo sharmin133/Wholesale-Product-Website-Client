@@ -21,7 +21,8 @@ const SuccessStory = () => {
   ];
 
   return (
-    <div className="py-12 bg-emerald-200">
+   <div className="py-16 bg-gradient-to-b from-emerald-100 via-emerald-200 to-emerald-400">
+
       <Fade direction="up" cascade>
         <h2 className="text-3xl md:text-5xl pb-8 text-center font-bold text-emerald-700">
           Success Stories

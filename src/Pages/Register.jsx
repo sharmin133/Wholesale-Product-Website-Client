@@ -52,7 +52,8 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen relative bg-amber-50 dark:bg-gray-900 flex items-center justify-center p-4 overflow-hidden">
+  <div className="min-h-screen bg-amber-50 dark:bg-gray-900 flex items-center justify-center p-4 md:mt-20 overflow-hidden pt-16">
+
       {/* Floating ellipses */}
       {[...Array(6)].map((_, i) => (
         <motion.div
@@ -75,7 +76,7 @@ const Register = () => {
         initial={{ opacity: 0, scale: 0.8, rotate: -3 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="bg-white dark:bg-gray-800 shadow-2xl rounded-2xl border-t-4 border-amber-400 p-6 w-full max-w-sm relative z-10"
+        className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl border-t-4 border-amber-400 p-6 w-full max-w-sm relative z-10"
       >
         <h1 className="text-4xl font-bold text-center text-emerald-700 dark:text-emerald-400 mb-6">
           Register Now

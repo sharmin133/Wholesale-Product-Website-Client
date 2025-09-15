@@ -4,7 +4,7 @@ import { FaBoxes, FaHandHoldingUsd, FaTruckLoading } from 'react-icons/fa'; // f
 
 const AboutUs = () => {
   return (
-    <div className='bg-white min-h-screen'>
+    <div className='bg-gradient-to-b from-amber-100 via-amber-200 to-amber-300 min-h-screen'>
       <div className="max-w-6xl mx-auto p-6 space-y-12">
 
         {/* Main Heading */}

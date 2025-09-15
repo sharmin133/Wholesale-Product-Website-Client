@@ -16,17 +16,18 @@ const Home = () => {
     <div className="bg-white dark:bg-gray-900 min-h-screen text-gray-900 dark:text-gray-100 transition-colors duration-300">
       
 
-        <div><AutoPlay /></div>
-        <div><Categories /></div>
-      <div><BannerDiscount /></div>
+       <AutoPlay />
+        <Categories />
+     <BannerDiscount />
 
-      <div className="  bg-emerald-200 px-16 py-12">
+      <div className="py-16 px-16 bg-gradient-to-b from-emerald-100 via-emerald-200 to-emerald-300">
+
         <Zoom triggerOnce>
           <h2 className="text-3xl md:text-5xl text-center font-bold text-emerald-700 pb-8">
             Know Before You Nest
           </h2>
 
-          <div className="collapse collapse-arrow bg-white border border-gray-300 dark:border-gray-600 rounded-md mb-2">
+          <div className="collapse collapse-arrow bg-white border  border-gray-300 dark:border-gray-600 rounded-md mb-2">
   <input type="radio" name="my-accordion-2" defaultChecked />
   <div className="collapse-title font-semibold text-2xl text-gray-800">How do I create an account?</div>
   <div className="collapse-content text-amber-500">
